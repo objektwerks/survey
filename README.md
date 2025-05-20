@@ -5,3 +5,7 @@ Survey
 Install
 -------
 1. brew install postgresql@14
+
+Build
+-----
+1. sbt clean compile
