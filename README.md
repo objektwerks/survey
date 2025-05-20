@@ -17,3 +17,6 @@ Test
 Run
 ---
 1. sbt run
+
+Resources
+---------
