@@ -41,7 +41,7 @@ final case class Choices(
   choices: List[String]
 ) extends Answer
 
-final case class Ratings(
+final case class Rating(
   id: Long = 0,
   questionId: Long,
   low: Int,
