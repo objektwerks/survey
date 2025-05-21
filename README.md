@@ -6,7 +6,7 @@ Model
 -----
 * Account
 * Survey 1 --> * Question
-* Question 1 --> 1 Answer
+* Question 1 --> 1 Answer ( Choices, Rating )
 
 Install
 -------
