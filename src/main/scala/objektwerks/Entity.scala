@@ -38,11 +38,12 @@ final case class AnswerItem(
 
 sealed trait Answer extends Entity derives CanEqual:
   val id: Long
-  val accountId: Long              
+  val accountId: Long
+  val answerItems: List[AnswerItem] 
   val created: String = Entity.now
 
 final case class SingleChoiceAnswer(
   id: Long = 0,
   accountId: Long,
-  answers: List[String]
+  answerItems: List[AnswerItem]
 ) extends Answer
