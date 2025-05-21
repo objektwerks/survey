@@ -29,8 +29,7 @@ final case class Question(
   created: String = Entity.now
 ) extends Entity derives CanEqual
 
-final case class Answer(
-  id: Long = 0,
-  accountId: Long,                  
-  created: String = Entity.now
-) extends Entity derives CanEqual
+sealed trait Answer extends Entity derives CanEqual:
+  val id: Long = 0
+  val accountId: Long              
+  val created: String = Entity.now
