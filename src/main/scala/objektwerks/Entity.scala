@@ -16,3 +16,9 @@ final case class Account(
   pin: String = Pin.newInstance,
   activated: String = Entity.now
 ) extends Entity derives CanEqual
+
+final case class Survey(
+  id: Long = 0,
+  accountId: Long,                  
+  built: String = Entity.now
+) extends Entity derives CanEqual
