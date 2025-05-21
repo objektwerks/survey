@@ -62,5 +62,5 @@ final case class Rating(
 final case class Text(
   id: Long = 0,
   questionId: Long,
-  item: String
+  response: String = ""
 ) extends Answer
