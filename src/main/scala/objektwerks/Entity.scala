@@ -46,7 +46,8 @@ final case class Choices(
 final case class Ranking(
   id: Long = 0,
   questionId: Long,
-  items: List[String]
+  items: List[String],
+  ranked: List[String]
 ) extends Answer
 
 final case class Rating(
