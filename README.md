@@ -5,7 +5,8 @@ Survey
 Model
 -----
 * Account
-* Survey 1 --> Question | Answer
+* Survey 1 --> * Question
+* Question 1 --> 1 Answer
 
 Install
 -------
