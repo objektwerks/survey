@@ -55,7 +55,8 @@ final case class Rating(
   questionId: Long,
   low: Int,
   high: Int,
-  step: Int
+  step: Int,
+  rated: Int = 0
 ) extends Answer
 
 final case class Text(
