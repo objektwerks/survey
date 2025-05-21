@@ -28,3 +28,9 @@ final case class Question(
   accountId: Long,                  
   created: String = Entity.now
 ) extends Entity derives CanEqual
+
+final case class Answer(
+  id: Long = 0,
+  accountId: Long,                  
+  created: String = Entity.now
+) extends Entity derives CanEqual
