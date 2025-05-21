@@ -34,7 +34,7 @@ sealed trait Answer extends Entity derives CanEqual:
   val accountId: Long              
   val created: String = Entity.now
 
-final case class ListAnswer(
+final case class SingleChoiceAnswer(
   id: Long = 0,
   accountId: Long,
   answers: List[String]
