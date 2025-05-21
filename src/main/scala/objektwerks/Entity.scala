@@ -30,6 +30,12 @@ final case class Question(
 ) extends Entity derives CanEqual
 
 sealed trait Answer extends Entity derives CanEqual:
-  val id: Long = 0
+  val id: Long
   val accountId: Long              
   val created: String = Entity.now
+
+final case class ListAnswer(
+  id: Long = 0,
+  accountId: Long,
+  answers: List[String]
+) extends Answer
