@@ -40,14 +40,14 @@ final case class Choices(
   id: Long = 0,
   questionId: Long,
   items: List[String],
-  selected: List[String]
+  selected: List[String] = List.empty[String]
 ) extends Answer
 
 final case class Ranking(
   id: Long = 0,
   questionId: Long,
   items: List[String],
-  ranked: List[String]
+  ranked: List[String] = List.empty[String]
 ) extends Answer
 
 final case class Rating(
