@@ -5,6 +5,7 @@ Survey
 Model
 -----
 * Account
+* Survey 1 --> Question
 
 Install
 -------
