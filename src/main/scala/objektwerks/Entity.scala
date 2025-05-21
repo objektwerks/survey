@@ -36,13 +36,6 @@ sealed trait Answer extends Entity derives CanEqual:
   val questionId: Long
   val created: String = Entity.now
 
-final case class Selections(
-  id: Long = 0,
-  questionId: Long,
-  items: List[String],
-  selected: List[String] = List.empty[String]
-) extends Answer
-
 final case class Ranking(
   id: Long = 0,
   questionId: Long,
@@ -59,8 +52,15 @@ final case class Rating(
   rated: Int = 0
 ) extends Answer
 
+final case class Selections(
+  id: Long = 0,
+  questionId: Long,
+  items: List[String],
+  selected: List[String] = List.empty[String]
+) extends Answer
+
 final case class Text(
   id: Long = 0,
   questionId: Long,
-  response: String = ""
+  entered: String = ""
 ) extends Answer
