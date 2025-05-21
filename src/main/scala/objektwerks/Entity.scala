@@ -55,3 +55,9 @@ final case class Rating(
   high: Int,
   step: Int
 ) extends Answer
+
+final case class Text(
+  id: Long = 0,
+  questionId: Long,
+  text: String
+) extends Answer
