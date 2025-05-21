@@ -39,3 +39,11 @@ final case class Choices(
   questionId: Long,
   choices: List[String]
 ) extends Answer
+
+final case class Ratings(
+  id: Long = 0,
+  questionId: Long,
+  low: Int,
+  high: Int,
+  step: Int
+) extends Answer
