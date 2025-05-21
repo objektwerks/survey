@@ -39,7 +39,8 @@ sealed trait Answer extends Entity derives CanEqual:
 final case class Choices(
   id: Long = 0,
   questionId: Long,
-  items: List[String]
+  items: List[String],
+  selected: List[String]
 ) extends Answer
 
 final case class Ranking(
