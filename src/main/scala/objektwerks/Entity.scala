@@ -25,7 +25,7 @@ final case class Survey(
 
 final case class Question(
   id: Long = 0,
-  accountId: Long,
+  surveyId: Long,
   text: String,
   answer: Answer,
   created: String = Entity.now
