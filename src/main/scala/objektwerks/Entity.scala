@@ -20,5 +20,11 @@ final case class Account(
 final case class Survey(
   id: Long = 0,
   accountId: Long,                  
-  built: String = Entity.now
+  created: String = Entity.now
+) extends Entity derives CanEqual
+
+final case class Question(
+  id: Long = 0,
+  accountId: Long,                  
+  created: String = Entity.now
 ) extends Entity derives CanEqual
