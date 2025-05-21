@@ -45,6 +45,7 @@ final case class Choices(
 final case class Rating(
   id: Long = 0,
   questionId: Long,
+  text: String,
   low: Int,
   high: Int,
   step: Int
