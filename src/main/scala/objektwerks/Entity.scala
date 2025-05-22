@@ -80,3 +80,9 @@ final case class RatingAnswer(
   questionId: Long,
   answer: Int
 ) extends Answer
+
+final case class TextAnswer(
+  id: Long = 0,
+  questionId: Long,
+  answer: String
+) extends Answer
