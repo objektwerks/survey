@@ -10,17 +10,17 @@ object Entity:
   def now: String = LocalDate.now.toString
   def nowMinusOneDay: String = LocalDate.now.minusDays(1).toString
 
+final case class Participant(
+  id: Long = 0,
+  email: String
+) extends Entity derives CanEqual
+
 final case class Account(
   id: Long = 0,
   license: String = UUID.randomUUID.toString,
   email: String = "",
   pin: String = Pin.newInstance,
   activated: String = Entity.now
-) extends Entity derives CanEqual
-
-final case class Participant(
-  id: Long = 0,
-  email: String
 ) extends Entity derives CanEqual
 
 final case class Survey(
