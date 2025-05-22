@@ -8,7 +8,6 @@ Model
 * Survey 1 --- * Question
 * Question 1 --- 1 Answer
 * Participant 1 --- * Answer
->Questions: Choices, Ranking, Rating, Text
 
 Install
 -------
