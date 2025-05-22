@@ -54,9 +54,7 @@ final case class Rating(
   id: Long = 0,
   surveyId: Long,
   question: String,
-  low: Int,
-  high: Int,
-  step: Int,
+  ratings: List[String]
 ) extends Question derives CanEqual
 
 final case class Text(
@@ -72,26 +70,14 @@ sealed trait Answer extends Value:
   val participantId: Long
   val created: String = Entity.now
 
-final case class ChoicesAnswer(
-  questionId: Long,
-  participantId: Long,
-  answer: List[String]
-) extends Answer derives CanEqual
-
-final case class RankingAnswer(
-  questionId: Long,
-  participantId: Long,
-  answer: List[String]
-) extends Answer derives CanEqual
-
-final case class RatingAnswer(
-  questionId: Long,
-  participantId: Long,
-  answer: Int
-) extends Answer derives CanEqual
-
 final case class TextAnswer(
   questionId: Long,
   participantId: Long,
   answer: String
+) extends Answer derives CanEqual
+
+final case class ListAnswer(
+  questionId: Long,
+  participantId: Long,
+  answer: List[String]
 ) extends Answer derives CanEqual
