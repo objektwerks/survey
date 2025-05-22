@@ -58,31 +58,28 @@ final case class Text(
   question: String
 ) extends Question
 
-sealed trait Answer extends Entity derives CanEqual:
-  val id: Long
+sealed trait Value
+
+sealed trait Answer extends Value derives CanEqual:
   val questionId: Long
   val created: String = Entity.now
 
 final case class ChoicesAnswer(
-  id: Long = 0,
   questionId: Long,
   answer: List[String]
 ) extends Answer
 
 final case class RankingAnswer(
-  id: Long = 0,
   questionId: Long,
   answer: List[String]
 ) extends Answer
 
 final case class RatingAnswer(
-  id: Long = 0,
   questionId: Long,
   answer: Int
 ) extends Answer
 
 final case class TextAnswer(
-  id: Long = 0,
   questionId: Long,
   answer: String
 ) extends Answer
