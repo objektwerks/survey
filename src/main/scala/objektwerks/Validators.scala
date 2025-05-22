@@ -40,3 +40,12 @@ object Validators:
         .validate(question.surveyId > 0)(Field("SurveyId"), Message("must be greater than 0."))
         .validate(question.question.nonEmpty)(Field("Question"), Message("must be non empty."))
         .validate(question.created.nonEmpty)(Field("Created"), Message("must be non empty."))
+
+  extension (question: TextsQuestion)
+    def validate: Validator =
+      Validator()
+        .validate(question.id >= 0)(Field("Id"), Message("must be greater than or equal to 0."))
+        .validate(question.surveyId > 0)(Field("SurveyId"), Message("must be greater than 0."))
+        .validate(question.question.nonEmpty)(Field("Question"), Message("must be non empty."))
+        .validate(question.texts.nonEmpty)(Field("Texts"), Message("must be non empty."))
+        .validate(question.created.nonEmpty)(Field("Created"), Message("must be non empty."))
