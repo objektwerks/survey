@@ -36,31 +36,17 @@ sealed trait Question extends Entity:
   val question: String
   val created: String = Entity.now
 
-final case class Choices(
-  id: Long = 0,
-  surveyId: Long,
-  question: String,
-  choices: List[String],
-) extends Question derives CanEqual
-
-final case class Ranking(
-  id: Long = 0,
-  surveyId: Long,
-  question: String,
-  rankings: List[String],
-) extends Question derives CanEqual
-
-final case class Rating(
-  id: Long = 0,
-  surveyId: Long,
-  question: String,
-  ratings: List[String]
-) extends Question derives CanEqual
-
 final case class Text(
   id: Long = 0,
   surveyId: Long,
   question: String
+) extends Question derives CanEqual
+
+final case class Texts(
+  id: Long = 0,
+  surveyId: Long,
+  question: String,
+  texts: List[String]
 ) extends Question derives CanEqual
 
 sealed trait Value
@@ -76,7 +62,7 @@ final case class TextAnswer(
   answer: String
 ) extends Answer derives CanEqual
 
-final case class ListAnswer(
+final case class TextsAnswer(
   questionId: Long,
   participantId: Long,
   answer: List[String]
