@@ -13,6 +13,7 @@ Relational Model
 ----------------
 * Survey * --> 1 Account
 * Question * --> 1 Survey
+* Answer 1 --> 1 Question | Participant
 
 Install
 -------
