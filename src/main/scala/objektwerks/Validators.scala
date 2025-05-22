@@ -9,6 +9,12 @@ object Validators:
     def isPin: Boolean = value.length == 7
     def isEmail: Boolean = value.length >= 3 && value.contains("@")
 
+  extension (participant: Participant)
+    def validate: Validator =
+      Validator()
+        .validate(participant.id >= 0)(Field("Id"), Message("must be greater than or equal to 0."))
+        .validate(participant.email.isEmail)(Field("Email"), Message("must be at least 3 characters in length and contain 1 @ symbol."))
+
   extension (account: Account)
     def validate: Validator =
       Validator()
