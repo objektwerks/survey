@@ -17,6 +17,11 @@ final case class Account(
   activated: String = Entity.now
 ) extends Entity derives CanEqual
 
+final case class Participant(
+  id: Long = 0,
+  email: String,
+) extends Entity derives CanEqual
+
 final case class Survey(
   id: Long = 0,
   accountId: Long,
