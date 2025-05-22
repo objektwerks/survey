@@ -26,7 +26,8 @@ final case class Survey(
   id: Long = 0,
   accountId: Long,
   title: String,
-  created: String = Entity.now
+  created: String = Entity.now,
+  released: String = Entity.now
 ) extends Entity derives CanEqual
 
 sealed trait Question extends Entity:
