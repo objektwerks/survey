@@ -74,3 +74,9 @@ final case class RankingAnswer(
   questionId: Long,
   answer: List[String]
 ) extends Answer
+
+final case class RatingAnswer(
+  id: Long = 0,
+  questionId: Long,
+  answer: Int
+) extends Answer
