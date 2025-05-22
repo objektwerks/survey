@@ -55,7 +55,7 @@ sealed trait Value
 sealed trait Answer extends Value:
   val questionId: Long
   val participantId: Long
-  val created: String = Entity.now
+  val answered: String = Entity.now
 
 final case class TextAnswer(
   questionId: Long,
