@@ -49,3 +49,10 @@ object Validators:
         .validate(question.question.nonEmpty)(Field("Question"), Message("must be non empty."))
         .validate(question.texts.nonEmpty)(Field("Texts"), Message("must be non empty."))
         .validate(question.created.nonEmpty)(Field("Created"), Message("must be non empty."))
+
+  extension (answer: TextAnswer)
+    def validate: Validator =
+      Validator()
+        .validate(answer.questionId >= 0)(Field("QuestionId"), Message("must be greater than or equal to 0."))
+        .validate(answer.participantId > 0)(Field("ParticipantId"), Message("must be greater than 0."))
+        .validate(answer.answer.nonEmpty)(Field("Answer"), Message("must be non empty."))
