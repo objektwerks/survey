@@ -4,9 +4,10 @@ Survey
 
 Model
 -----
-* Account
-* Survey 1 --> * Question
-* Question 1 --> 1 Answer ( Choices, Ranking, Rating, Text )
+* Survey * --> 1 Account
+* Question * --> 1 Survey
+* Answer 1 --> 1 Question
+>Answers: Choices, Ranking, Rating, Text
 
 Install
 -------
