@@ -23,43 +23,42 @@ final case class Survey(
   created: String = Entity.now
 ) extends Entity derives CanEqual
 
-final case class Question(
+sealed trait Question extends Entity derives CanEqual:
+  val id: Long
+  val surveyId: Long
+  val question: String
+  val created: String = Entity.now
+
+final case class Choices(
   id: Long = 0,
   surveyId: Long,
   question: String,
-  created: String = Entity.now
-) extends Entity derives CanEqual
+  choices: List[String],
+) extends Question
+
+final case class Ranking(
+  id: Long = 0,
+  surveyId: Long,
+  question: String,
+  rankings: List[String],
+) extends Question
+
+final case class Rating(
+  id: Long = 0,
+  surveyId: Long,
+  question: String,
+  low: Int,
+  high: Int,
+  step: Int,
+) extends Question
+
+final case class Text(
+  id: Long = 0,
+  surveyId: Long,
+  question: String
+) extends Question
 
 sealed trait Answer extends Entity derives CanEqual:
   val id: Long
   val questionId: Long
   val created: String = Entity.now
-
-final case class Choices(
-  id: Long = 0,
-  questionId: Long,
-  choices: List[String],
-  answer: List[String] = List.empty[String]
-) extends Answer
-
-final case class Ranking(
-  id: Long = 0,
-  questionId: Long,
-  rankings: List[String],
-  answer: List[String] = List.empty[String]
-) extends Answer
-
-final case class Rating(
-  id: Long = 0,
-  questionId: Long,
-  low: Int,
-  high: Int,
-  step: Int,
-  answer: Int = 0
-) extends Answer
-
-final case class Text(
-  id: Long = 0,
-  questionId: Long,
-  answer: String = ""
-) extends Answer
