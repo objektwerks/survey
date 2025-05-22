@@ -19,7 +19,7 @@ final case class Account(
 
 final case class Participant(
   id: Long = 0,
-  email: String,
+  email: String
 ) extends Entity derives CanEqual
 
 final case class Survey(
