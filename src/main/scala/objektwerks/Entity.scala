@@ -36,13 +36,13 @@ sealed trait Question extends Entity:
   val question: String
   val created: String = Entity.now
 
-final case class Text(
+final case class TextQuestion(
   id: Long = 0,
   surveyId: Long,
   question: String
 ) extends Question derives CanEqual
 
-final case class Texts(
+final case class TextsQuestion(
   id: Long = 0,
   surveyId: Long,
   question: String,
