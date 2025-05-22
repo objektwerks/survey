@@ -23,5 +23,6 @@ object Validators:
       Validator()
         .validate(survey.id >= 0)(Field("Id"), Message("must be greater than or equal to 0."))
         .validate(survey.accountId > 0)(Field("AccountId"), Message("must be greater than 0."))
+        .validate(survey.title.nonEmpty)(Field("Title"), Message("must be non empty."))
         .validate(survey.created.nonEmpty)(Field("Created"), Message("must be non empty."))
         .validate(survey.released.nonEmpty)(Field("Released"), Message("must be non empty."))
