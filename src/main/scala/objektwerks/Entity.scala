@@ -8,6 +8,7 @@ sealed trait Entity:
 
 object Entity:
   def now: String = LocalDate.now.toString
+  def nowMinusOneDay: String = LocalDate.now.minusDays(1).toString
 
 final case class Account(
   id: Long = 0,
@@ -27,7 +28,7 @@ final case class Survey(
   accountId: Long,
   title: String,
   created: String = Entity.now,
-  released: String = Entity.now
+  released: String = Entity.nowMinusOneDay
 ) extends Entity derives CanEqual
 
 sealed trait Question extends Entity:
