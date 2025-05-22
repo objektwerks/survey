@@ -68,3 +68,9 @@ final case class ChoicesAnswer(
   questionId: Long,
   answer: List[String]
 ) extends Answer
+
+final case class RankingAnswer(
+  id: Long = 0,
+  questionId: Long,
+  answer: List[String]
+) extends Answer
