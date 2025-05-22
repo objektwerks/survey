@@ -2,12 +2,17 @@ Survey
 ------
 >Survey service using Scala 3.
 
-Model
------
+OO Model
+--------
 * Account 1 --- * Survey
 * Survey 1 --- * Question
 * Question 1 --- * Answer
 * Participant 1 --- * Answer
+
+Relational Model
+----------------
+* Survey * --> 1 Account
+* Question * --> 1 Survey
 
 Install
 -------
