@@ -81,6 +81,11 @@ object Validators:
         case register: Register => register.validate
         case login: Login => login.validate
 
+  extension (registered: Registered)
+    def validate: Validator =
+      Validator()
+        .validate(registered.account.validate)
+
   extension (event: Event)
     def validate: Validator =
       event match
