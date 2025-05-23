@@ -31,24 +31,12 @@ final case class Survey(
   released: String = Entity.nowMinusOneDay
 ) extends Entity derives CanEqual
 
-sealed trait Question extends Entity:
-  val id: Long
-  val surveyId: Long
-  val question: String
-  val created: String = Entity.now
-
-final case class TextQuestion(
-  id: Long = 0,
-  surveyId: Long,
-  question: String
-) extends Question derives CanEqual
-
-final case class TextsQuestion(
+final case class Question(
   id: Long = 0,
   surveyId: Long,
   question: String,
   texts: List[String]
-) extends Question derives CanEqual
+) extends Entity derives CanEqual
 
 sealed trait Value
 
