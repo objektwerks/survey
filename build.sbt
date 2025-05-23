@@ -3,6 +3,7 @@ organization := "objektwerks"
 version := "1.0.0"
 scalaVersion := "3.7.1-RC1"
 libraryDependencies ++= {
+  val jsoniterVersion = "2.36.2"
   Seq(
     "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-core" % jsoniterVersion,
     "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-macros" % jsoniterVersion % Provided,
