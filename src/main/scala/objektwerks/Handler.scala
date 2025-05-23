@@ -20,3 +20,7 @@ final class Handler(store: Store, emailer: Emailer):
         catch
           case NonFatal(error) => Unauthorized(s"Unauthorized: $command, cause: $error")
       case Register(_) | Login(_, _) => Authorized
+
+  def sendEmail(email: String, message: String): Unit =
+    val recipients = List(email)
+    emailer.send(recipients, message)
