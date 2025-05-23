@@ -81,7 +81,7 @@ export SURVEY_CACHE_MAX_SIZE=10
 export SURVEY_CACHE_EXPIRE_AFTER=24
 
 export SURVEY_POSTGRESQL_DRIVER="org.postgresql.ds.PGSimpleDataSource"
-export SURVEY_POSTGRESQL_URL="jdbc:postgresql://localhost:5432/house"
+export SURVEY_POSTGRESQL_URL="jdbc:postgresql://localhost:5432/survey"
 export SURVEY_POSTGRESQL_USER="your.computer.name"
 export SURVEY_POSTGRESQL_PASSWORD="your.password"
 
