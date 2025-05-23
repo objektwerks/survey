@@ -5,6 +5,10 @@ scalaVersion := "3.7.1-RC1"
 libraryDependencies ++= {
   val jsoniterVersion = "2.36.2"
   Seq(
+    "org.scalikejdbc" %% "scalikejdbc" % "4.3.2",
+    "com.zaxxer" % "HikariCP" % "6.3.0" exclude("org.slf4j", "slf4j-api"),
+    "org.postgresql" % "postgresql" % "42.7.5",
+    "com.github.blemale" %% "scaffeine" % "5.3.0",
     "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-core" % jsoniterVersion,
     "com.github.plokhotnyuk.jsoniter-scala" %% "jsoniter-scala-macros" % jsoniterVersion % Provided,
     "org.jodd" % "jodd-mail" % "7.0.1",
