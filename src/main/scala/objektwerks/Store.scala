@@ -28,3 +28,25 @@ object Store:
     ds.addDataSourceProperty("user", config.getString("db.user"))
     ds.addDataSourceProperty("password", config.getString("db.password"))
     ds
+
+final class Store(cache: Cache[String, String],
+                  dataSource: DataSource):
+  ConnectionPool.singleton( DataSourceConnectionPool(dataSource) )
+
+  def register(account: Account): Long =
+    addAccount(account)
+
+  def login(email: String, pin: String): Option[Account] =
+    DB readOnly { implicit session =>
+      sql"select * from account where email = $email and pin = $pin"
+        .map(rs =>
+          Account(
+            rs.long("id"),
+            rs.string("license"),
+            rs.string("email"),
+            rs.string("pin"),
+            rs.string("activated")
+          )
+        )
+        .single()
+    }
