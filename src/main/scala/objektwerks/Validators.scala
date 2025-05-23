@@ -14,6 +14,7 @@ object Validators:
       Validator()
         .validate(participant.id >= 0)(Field("Id"), Message("must be greater than or equal to 0."))
         .validate(participant.email.isEmail)(Field("Email"), Message("must be at least 3 characters in length and contain 1 @ symbol."))
+        .validate(participant.activated.nonEmpty)(Field("Activated"), Message("must be non empty."))
 
   extension (account: Account)
     def validate: Validator =
