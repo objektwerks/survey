@@ -27,7 +27,7 @@ CREATE TABLE question (
   id BIGSERIAL PRIMARY KEY,
   survey_id BIGINT REFERENCES survey(id),
   question VARCHAR NOT NULL,
-  texts VARCHAR NOT NULL,
+  choices VARCHAR NOT NULL,
   created VARCHAR(10) NOT NULL
 );
 
