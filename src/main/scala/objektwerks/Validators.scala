@@ -52,6 +52,11 @@ object Validators:
         .validate(answer.answer.nonEmpty)(Field("Answer"), Message("must be non empty."))
         .validate(answer.answered.nonEmpty)(Field("Answered"), Message("must be non empty."))
 
+  def validateEntity(entity: Entity): Validator =
+    entity match
+      case participant: Participant => participant.validate
+      case account: Account => account.validate
+
   extension (register: Register)
     def validate: Validator =
       Validator()
