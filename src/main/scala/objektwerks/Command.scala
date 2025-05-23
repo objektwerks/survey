@@ -8,3 +8,7 @@ sealed trait License:
 final case class Register(email: String) extends Command
 
 final case class Login(email: String, pin: String) extends Command
+
+final case class ListFaults(license: String) extends Command with License
+
+final case class AddFault(license: String, fault: String) extends Command with License
