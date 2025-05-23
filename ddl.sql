@@ -42,5 +42,12 @@ CREATE TABLE text_answer (
   question_id BIGINT REFERENCES text_question(id) | texts_question(id),
   partipant_id BIGINT REFERENCES survey(id),
   question VARCHAR NOT NULL,
-  created VARCHAR(10) NOT NULL
+  answered VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE texts_answer (
+  question_id BIGINT REFERENCES text_question(id) | texts_question(id),
+  partipant_id BIGINT REFERENCES survey(id),
+  question VARCHAR NOT NULL,
+  answered VARCHAR(10) NOT NULL
 );
