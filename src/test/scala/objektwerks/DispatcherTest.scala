@@ -16,3 +16,5 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
   val emailer = Emailer(config)
   val handler = Handler(store, emailer)
   val dispatcher = Dispatcher(handler)
+
+  var testAccount = Account()
