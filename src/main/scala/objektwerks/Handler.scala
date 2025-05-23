@@ -7,4 +7,16 @@ import scala.concurrent.duration.*
 import scala.util.Try
 import scala.util.control.NonFatal
 
-final class Handler(store: Store, emailer: Emailer)
+final class Handler(store: Store, emailer: Emailer):
+  def isAuthorized(command: Command): Security =
+    command match
+      case license: License =>
+        try
+          supervised:
+            retry( RetryConfig.delay(1, 100.millis) )(
+              if store.isAuthorized(license.license) then Authorized
+              else Unauthorized(s"Unauthorized: $command")
+            )
+        catch
+          case NonFatal(error) => Unauthorized(s"Unauthorized: $command, cause: $error")
+      case Register(_) | Login(_, _) => Authorized
