@@ -86,6 +86,11 @@ object Validators:
       Validator()
         .validate(registered.account.validate)
 
+  extension (loggedIn: LoggedIn)
+    def validate: Validator =
+      Validator()
+        .validate(loggedIn.account.validate)
+
   extension (event: Event)
     def validate: Validator =
       event match
