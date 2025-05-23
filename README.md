@@ -31,6 +31,42 @@ Run
 ---
 1. sbt run
 
+Postgresql
+----------
+1. config:
+    1. on osx intel: /usr/local/var/postgres/postgresql.config : listen_addresses = ‘localhost’, port = 5432
+    2. on osx m1: /opt/homebrew/var/postgres/postgresql.config : listen_addresses = ‘localhost’, port = 5432
+2. run:
+    1. brew services start postgresql@14
+3. logs:
+    1. on osx intel: /usr/local/var/log/postgres.log
+    2. on m1: /opt/homebrew/var/log/postgres.log
+
+Database
+--------
+>Example database url: postgresql://localhost:5432/house?user=mycomputername&password=house"
+1. psql postgres
+2. CREATE DATABASE house OWNER [your computer name];
+3. GRANT ALL PRIVILEGES ON DATABASE house TO [your computer name];
+4. \l
+5. \q
+6. psql house
+7. \i ddl.sql
+8. \q
+
+DDL
+---
+>Alternatively run: psql -d house -f ddl.sql
+1. psql house
+2. \i ddl.sql
+3. \q
+
+Drop
+----
+1. psql postgres
+2. drop database house;
+3. \q
+
 Resources
 ---------
 * [Survey Monkey](https://www.surveymonkey.com/mp/survey-question-types/)
