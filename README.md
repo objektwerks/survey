@@ -44,7 +44,7 @@ Postgresql
 
 Database
 --------
->Example database url: postgresql://localhost:5432/survey?user=mycomputername&password=survey"
+>Example database url: postgresql://localhost:5432/survey?user=yourcomputername&password=survey"
 1. psql postgres
 2. CREATE DATABASE survey OWNER [your computer name];
 3. GRANT ALL PRIVILEGES ON DATABASE survey TO [your computer name];
