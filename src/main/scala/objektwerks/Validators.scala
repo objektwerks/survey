@@ -98,3 +98,6 @@ object Validators:
       event match
         case registered: Registered => registered.validate
         case loggedIn: LoggedIn => loggedIn.validate
+        case faultsListed: FaultsListed => faultsListed.validate
+        case faultAdded: FaultAdded => faultAdded.validate
+        case fault: Fault => fault.validate
