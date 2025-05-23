@@ -40,19 +40,8 @@ final case class Question(
 
 sealed trait Value
 
-sealed trait Answer extends Value:
-  val questionId: Long
-  val participantId: Long
-  val answered: String = Entity.now
-
-final case class TextAnswer(
-  questionId: Long,
-  participantId: Long,
-  answer: String
-) extends Answer derives CanEqual
-
-final case class TextsAnswer(
+final case class Answer(
   questionId: Long,
   participantId: Long,
   answer: List[String]
-) extends Answer derives CanEqual
+) extends Value derives CanEqual
