@@ -29,3 +29,9 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
       case Registered(account) =>
         testAccount = account
       case fault => fail(s"Invalid registered event: $fault")
+
+  def login: Unit =
+    val login = Login(testAccount.email, testAccount.pin)
+    dispatcher.dispatch(login) match
+      case LoggedIn(account) => account shouldBe testAccount
+      case fault => fail(s"Invalid loggedin event: $fault")
