@@ -9,7 +9,8 @@ CREATE TABLE fault (
 
 CREATE TABLE participant (
   id BIGSERIAL PRIMARY KEY,
-  email VARCHAR NOT NULL
+  email VARCHAR NOT NULL,
+  activated VARCHAR(10) NOT NULL
 );
 
 CREATE TABLE account (
