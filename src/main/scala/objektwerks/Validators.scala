@@ -63,3 +63,9 @@ object Validators:
         .validate(answer.questionId >= 0)(Field("QuestionId"), Message("must be greater than or equal to 0."))
         .validate(answer.participantId > 0)(Field("ParticipantId"), Message("must be greater than 0."))
         .validate(answer.answer.nonEmpty)(Field("Answer"), Message("must be non empty."))
+
+  extension (event: Event)
+    def validate: Validator =
+      event match
+        case registered: Registered => registered.validate
+        case loggedIn: LoggedIn => loggedIn.validate
