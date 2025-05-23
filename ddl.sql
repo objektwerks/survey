@@ -29,3 +29,11 @@ CREATE TABLE text_question (
   question VARCHAR NOT NULL,
   created VARCHAR(10) NOT NULL
 );
+
+CREATE TABLE texts_question (
+  id BIGSERIAL PRIMARY KEY,
+  survey_id BIGINT REFERENCES survey(id),
+  question VARCHAR NOT NULL,
+  texts VARCHAR NOT NULL,
+  created VARCHAR(10) NOT NULL
+);
