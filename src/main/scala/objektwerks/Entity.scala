@@ -40,12 +40,11 @@ final case class Question(
   created: String = Entity.now
 ) extends Entity derives CanEqual
 
-sealed trait Value
-
 final case class Answer(
+  id: Long = 0,
   surveyId: Long,
   questionId: Long,
   participantId: Long,
   answer: List[String],
   answered: String = Entity.now
-) extends Value derives CanEqual
+) extends Entity derives CanEqual
