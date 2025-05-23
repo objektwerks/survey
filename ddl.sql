@@ -7,6 +7,11 @@ CREATE TABLE fault (
   occurred VARCHAR NOT NULL
 );
 
+CREATE TABLE participant (
+  id BIGSERIAL PRIMARY KEY,
+  email VARCHAR NOT NULL
+);
+
 CREATE TABLE account (
   id BIGSERIAL PRIMARY KEY,
   license CHAR(36) UNIQUE NOT NULL,
