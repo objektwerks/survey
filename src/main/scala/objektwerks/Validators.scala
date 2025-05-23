@@ -55,9 +55,10 @@ object Validators:
   def validateEntity(entity: Entity): Validator =
     entity match
       case participant: Participant => participant.validate
-      case account: Account => account.validate
-      case survey: Survey => survey.validate
-      case question: Question => question.validate
+      case account: Account         => account.validate
+      case survey: Survey           => survey.validate
+      case question: Question       => question.validate
+      case answer: Answer           => answer.validate
 
   extension (register: Register)
     def validate: Validator =
