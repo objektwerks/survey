@@ -75,6 +75,17 @@ object Validators:
         .validate(login.email.isEmail)(Field("Email"), Message("must be at least 3 characters in length and contain 1 @ symbol."))
         .validate(login.pin.isPin)(Field("Pin"), Message("must be 7 characters in length."))
 
+  extension (listFaults: ListFaults)
+    def validate: Validator =
+      Validator()
+        .validate(listFaults.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
+
+  extension (addFault: AddFault)
+    def validate: Validator =
+      Validator()
+        .validate(addFault.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
+        .validate(addFault.fault.nonEmpty)(Field("Fault"), Message("must be non empty."))
+
   extension (command: Command)
     def validate: Validator =
       command match
