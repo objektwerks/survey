@@ -12,7 +12,8 @@ object Entity:
 
 final case class Participant(
   id: Long = 0,
-  email: String
+  email: String,
+  activated: String = Entity.now
 ) extends Entity derives CanEqual
 
 final case class Account(
