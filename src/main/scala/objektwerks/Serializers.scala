@@ -6,8 +6,6 @@ import com.github.plokhotnyuk.jsoniter_scala.macros.*
 object Serializers:
   given JsonValueCodec[Entity] = JsonCodecMaker.make[Entity](CodecMakerConfig.withDiscriminatorFieldName(None))
 
-  given JsonValueCodec[Value] = JsonCodecMaker.make[Value](CodecMakerConfig.withDiscriminatorFieldName(None))
-
   given JsonValueCodec[Command] = JsonCodecMaker.make[Command](CodecMakerConfig.withDiscriminatorFieldName(None))
 
   given JsonValueCodec[Event] = JsonCodecMaker.make[Event](CodecMakerConfig.withDiscriminatorFieldName(None))
