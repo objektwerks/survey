@@ -57,6 +57,7 @@ object Validators:
       case participant: Participant => participant.validate
       case account: Account => account.validate
       case survey: Survey => survey.validate
+      case question: Question => question.validate
 
   extension (register: Register)
     def validate: Validator =
