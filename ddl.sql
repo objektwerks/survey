@@ -38,8 +38,8 @@ CREATE TABLE question (
 );
 
 CREATE TABLE answer (
+  survey_id BIGINT REFERENCES survey(id),
   question_id BIGINT REFERENCES question(id),
-  partipant_id BIGINT REFERENCES survey(id),
-  question VARCHAR NOT NULL,
+  partipant_id BIGINT REFERENCES participant(id),
   answered VARCHAR(10) NOT NULL
 );
