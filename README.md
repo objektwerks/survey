@@ -44,27 +44,27 @@ Postgresql
 
 Database
 --------
->Example database url: postgresql://localhost:5432/house?user=mycomputername&password=house"
+>Example database url: postgresql://localhost:5432/survey?user=mycomputername&password=survey"
 1. psql postgres
-2. CREATE DATABASE house OWNER [your computer name];
-3. GRANT ALL PRIVILEGES ON DATABASE house TO [your computer name];
+2. CREATE DATABASE survey OWNER [your computer name];
+3. GRANT ALL PRIVILEGES ON DATABASE survey TO [your computer name];
 4. \l
 5. \q
-6. psql house
+6. psql survey
 7. \i ddl.sql
 8. \q
 
 DDL
 ---
->Alternatively run: psql -d house -f ddl.sql
-1. psql house
+>Alternatively run: psql -d survey -f ddl.sql
+1. psql survey
 2. \i ddl.sql
 3. \q
 
 Drop
 ----
 1. psql postgres
-2. drop database house;
+2. drop database survey;
 3. \q
 
 Resources
