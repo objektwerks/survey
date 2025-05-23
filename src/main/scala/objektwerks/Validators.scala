@@ -64,6 +64,11 @@ object Validators:
         .validate(answer.participantId > 0)(Field("ParticipantId"), Message("must be greater than 0."))
         .validate(answer.answer.nonEmpty)(Field("Answer"), Message("must be non empty."))
 
+  extension (register: Register)
+    def validate: Validator =
+      Validator()
+        .validate(register.email.isEmail)(Field("Email"), Message("must be at least 3 characters in length and contain 1 @ symbol."))
+
   extension (command: Command)
     def validate: Validator =
       command match
