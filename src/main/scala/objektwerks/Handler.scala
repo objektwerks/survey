@@ -35,3 +35,13 @@ final class Handler(store: Store, emailer: Emailer):
         Registered( account.copy(id = id) )
     catch
       case NonFatal(error) => addFault( Fault(s"Registration failed for: $email, because: ${error.getMessage}") )
+
+  def login(email: String, pin: String): Event =
+    Try:
+      supervised:
+        retry( RetryConfig.delay(1, 100.millis) )( store.login(email, pin) )
+    .fold(
+      error => addFault( Fault(s"Login failed: ${error.getMessage}") ),
+      optionalAccount =>
+        if optionalAccount.isDefined then LoggedIn( optionalAccount.get )
+        else addFault( Fault(s"Login failed for email address: $email and pin: $pin") ) )
