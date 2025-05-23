@@ -3,9 +3,15 @@ organization := "objektwerks"
 version := "1.0.0"
 scalaVersion := "3.7.1-RC1"
 libraryDependencies ++= {
+  val tapirVersion = "1.11.28"
+  val oxVersion = "0.5.13"
   val jsoniterVersion = "2.36.2"
   Seq(
-    "com.softwaremill.ox" %% "core" % "0.5.13",
+    "com.softwaremill.sttp.tapir" %% "tapir-core" % tapirVersion,
+    "com.softwaremill.sttp.tapir" %% "tapir-jdkhttp-server" % tapirVersion,
+    "com.softwaremill.sttp.tapir" %% "tapir-jsoniter-scala" % tapirVersion,
+    "com.softwaremill.sttp.tapir" %% "tapir-swagger-ui-bundle" % tapirVersion,
+    "com.softwaremill.ox" %% "core" % oxVersion,
     "org.scalikejdbc" %% "scalikejdbc" % "4.3.2",
     "com.zaxxer" % "HikariCP" % "6.3.0" exclude("org.slf4j", "slf4j-api"),
     "org.postgresql" % "postgresql" % "42.7.5",
