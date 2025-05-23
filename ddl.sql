@@ -38,6 +38,7 @@ CREATE TABLE question (
 );
 
 CREATE TABLE answer (
+  id BIGSERIAL PRIMARY KEY,
   survey_id BIGINT REFERENCES survey(id),
   question_id BIGINT REFERENCES question(id),
   partipant_id BIGINT REFERENCES participant(id),
