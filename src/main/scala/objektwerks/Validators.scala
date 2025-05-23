@@ -69,6 +69,12 @@ object Validators:
       Validator()
         .validate(register.email.isEmail)(Field("Email"), Message("must be at least 3 characters in length and contain 1 @ symbol."))
 
+  extension (login: Login)
+    def validate: Validator =
+      Validator()
+        .validate(login.email.isEmail)(Field("Email"), Message("must be at least 3 characters in length and contain 1 @ symbol."))
+        .validate(login.pin.isPin)(Field("Pin"), Message("must be 7 characters in length."))
+
   extension (command: Command)
     def validate: Validator =
       command match
