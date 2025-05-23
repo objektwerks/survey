@@ -6,6 +6,7 @@ OO Model
 --------
 * Account 1 --- * Survey
 * Survey 1 --- * Question
+* Survey 1 --- * Answer
 * Question 1 --- * Answer
 * Participant 1 --- * Answer
 
@@ -13,7 +14,7 @@ Relational Model
 ----------------
 * Survey * --> 1 Account
 * Question * --> 1 Survey
-* Answer 1 --> 1 Question | Participant
+* Answer * --> 1 Survey | Question | Participant
 
 Install
 -------
