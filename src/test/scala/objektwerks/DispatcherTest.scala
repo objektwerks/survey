@@ -22,3 +22,10 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
   test("dispatcher"):
     register
     login
+
+  def register: Unit =
+    val register = Register(config.getString("email.sender"))
+    dispatcher.dispatch(register) match
+      case Registered(account) =>
+        testAccount = account
+      case fault => fail(s"Invalid registered event: $fault")
