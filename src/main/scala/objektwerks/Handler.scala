@@ -54,3 +54,21 @@ final class Handler(store: Store, emailer: Emailer):
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List faults failed: ${error.getMessage}") )
+
+  def addFault(fault: String): Event =
+    try
+      FaultAdded(
+        supervised:
+          retry( RetryConfig.delay(1, 100.millis) )( store.addFault( Fault(fault) ) )
+      )
+    catch
+      case NonFatal(error) => addFault( Fault(s"Add fault failed: ${error.getMessage}") )
+
+  def addFault(fault: Fault): Event =
+    try
+      FaultAdded(
+        supervised:
+          retry( RetryConfig.delay(1, 100.millis) )( store.addFault(fault) )
+      )
+    catch
+      case NonFatal(error) => addFault( Fault(s"Add fault failed: ${error.getMessage}") )
