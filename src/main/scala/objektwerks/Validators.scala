@@ -64,6 +64,12 @@ object Validators:
         .validate(answer.participantId > 0)(Field("ParticipantId"), Message("must be greater than 0."))
         .validate(answer.answer.nonEmpty)(Field("Answer"), Message("must be non empty."))
 
+  extension (command: Command)
+    def validate: Validator =
+      command match
+        case register: Register => register.validate
+        case login: Login => login.validate
+
   extension (event: Event)
     def validate: Validator =
       event match
