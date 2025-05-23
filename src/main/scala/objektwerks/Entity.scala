@@ -43,6 +43,7 @@ final case class Question(
 sealed trait Value
 
 final case class Answer(
+  surveyId: Long,
   questionId: Long,
   participantId: Long,
   answer: List[String],
