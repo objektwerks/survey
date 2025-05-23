@@ -71,23 +71,23 @@ Environment
 -----------
 >The following environment variables must be defined:
 ```
-export HOUSE_HOST="127.0.0.1"
-export HOUSE_PORT=7070
-export HOUSE_ENDPOINT="/command"
-export HOUSE_PATH="command"
+export SURVEY_HOST="127.0.0.1"
+export SURVEY_PORT=7070
+export SURVEY_ENDPOINT="/command"
+export SURVEY_PATH="command"
 
-export HOUSE_CACHE_INITIAL_SIZE=4
-export HOUSE_CACHE_MAX_SIZE=10
-export HOUSE_CACHE_EXPIRE_AFTER=24
+export SURVEY_CACHE_INITIAL_SIZE=4
+export SURVEY_CACHE_MAX_SIZE=10
+export SURVEY_CACHE_EXPIRE_AFTER=24
 
-export HOUSE_POSTGRESQL_DRIVER="org.postgresql.ds.PGSimpleDataSource"
-export HOUSE_POSTGRESQL_URL="jdbc:postgresql://localhost:5432/house"
-export HOUSE_POSTGRESQL_USER="your.computer.name"
-export HOUSE_POSTGRESQL_PASSWORD="your.password"
+export SURVEY_POSTGRESQL_DRIVER="org.postgresql.ds.PGSimpleDataSource"
+export SURVEY_POSTGRESQL_URL="jdbc:postgresql://localhost:5432/house"
+export SURVEY_POSTGRESQL_USER="your.computer.name"
+export SURVEY_POSTGRESQL_PASSWORD="your.password"
 
-export HOUSE_EMAIL_HOST="your.email.host"
-export HOUSE_EMAIL_ADDRESS="your.email.address@email.com"
-export HOUSE_EMAIL_PASSWORD="your.email.password"
+export SURVEY_EMAIL_HOST="your.email.host"
+export SURVEY_EMAIL_ADDRESS="your.email.address@email.com"
+export SURVEY_EMAIL_PASSWORD="your.email.password"
 ```
 
 Resources
