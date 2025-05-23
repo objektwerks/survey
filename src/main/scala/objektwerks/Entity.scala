@@ -35,7 +35,8 @@ final case class Question(
   id: Long = 0,
   surveyId: Long,
   question: String,
-  texts: List[String]
+  texts: List[String],
+  created: String = Entity.now
 ) extends Entity derives CanEqual
 
 sealed trait Value
@@ -43,5 +44,6 @@ sealed trait Value
 final case class Answer(
   questionId: Long,
   participantId: Long,
-  answer: List[String]
+  answer: List[String],
+  created: String = Entity.now
 ) extends Value derives CanEqual
