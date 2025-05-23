@@ -22,3 +22,10 @@ CREATE TABLE survey (
   created VARCHAR(10) NOT NULL,
   released VARCHAR(10) NOT NULL
 );
+
+CREATE TABLE text_question (
+  id BIGSERIAL PRIMARY KEY,
+  survey_id BIGINT REFERENCES survey(id),
+  question VARCHAR NOT NULL,
+  created VARCHAR(10) NOT NULL
+);
