@@ -45,3 +45,12 @@ final class Handler(store: Store, emailer: Emailer):
       optionalAccount =>
         if optionalAccount.isDefined then LoggedIn( optionalAccount.get )
         else addFault( Fault(s"Login failed for email address: $email and pin: $pin") ) )
+
+  def listFaults(): Event =
+    try
+      FaultsListed(
+        supervised:
+          retry( RetryConfig.delay(1, 100.millis) )( store.listFaults() )
+      )
+    catch
+      case NonFatal(error) => addFault( Fault(s"List faults failed: ${error.getMessage}") )
