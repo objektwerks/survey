@@ -184,6 +184,11 @@ object Validators:
       Validator()
         .validate(surveyAdded.id > 0)(Field("Id"), Message("must be greater than 0."))
 
+  extension (surveyUpdated: SurveyUpdated)
+    def validate: Validator =
+      Validator()
+        .validate(surveyUpdated.count == 1)(Field("Count"), Message("must equal 1."))
+
   extension (questionsListed: QuestionsListed)
     def validate: Validator =
       Validator()
