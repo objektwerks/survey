@@ -189,6 +189,11 @@ object Validators:
       Validator()
         .validate(answersListed.answers.length >= 0)(Field("Answers"), Message("length must be greater than or equal to 0."))
 
+  extension (answerAdded: AnswerAdded)
+    def validate: Validator =
+      Validator()
+        .validate(answerAdded.id > 0)(Field("Id"), Message("must be greater than 0."))
+
   extension (fault: Fault)
     def validate: Validator =
       Validator()
