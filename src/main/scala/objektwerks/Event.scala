@@ -22,6 +22,10 @@ final case class QuestionAdded(id: Long) extends Event
 
 final case class QuestionUpdated(count: Int) extends Event
 
+final case class AnswersListed(answers: List[Answer]) extends Event
+
+final case class AnswerAdded(id: Long) extends Event
+
 final case class Fault(cause: String, occurred: String = Entity.now) extends Event
 
 final case class FaultsListed(faults: List[Fault]) extends Event
