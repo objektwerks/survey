@@ -116,7 +116,6 @@ object Validators:
       Validator()
         .validate(listAnswers.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
         .validate(listAnswers.surveyId > 0)(Field("SuveyId"), Message("must be greater than 0."))
-        .validate(listAnswers.questionId > 0)(Field("QuestionId"), Message("must be greater than 0."))
         .validate(listAnswers.participantId > 0)(Field("ParticipantId"), Message("must be greater than 0."))
 
   extension (addAnswer: AddAnswer)
