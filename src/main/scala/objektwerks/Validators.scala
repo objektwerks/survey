@@ -93,6 +93,12 @@ object Validators:
         .validate(updateSurvey.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
         .validate(updateSurvey.survey.validate)
 
+  extension (listQuestions: ListQuestions)
+    def validate: Validator =
+      Validator()
+        .validate(listQuestions.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
+        .validate(listQuestions.surveyId > 0)(Field("SuveyId"), Message("must be greater than 0."))
+
   extension (listFaults: ListFaults)
     def validate: Validator =
       Validator()
