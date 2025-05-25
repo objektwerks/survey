@@ -23,6 +23,7 @@ final case class UpdateQuestion(license: String, question: Question) extends Com
 
 final case class ListAnswers(license: String, surveyId: Long, questionId: Long, participantId: Long) extends Command with License
 
+final case class AddAnswer(license: String, answer: Answer) extends Command with License
 
 final case class ListFaults(license: String) extends Command with License
 
