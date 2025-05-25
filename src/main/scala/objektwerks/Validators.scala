@@ -184,6 +184,9 @@ object Validators:
         case surveysListed: SurveysListed         => surveysListed.validate
         case surveyAdded: SurveyAdded             => surveyAdded.validate
         case surveyUpdated: SurveyUpdated         => surveyUpdated.validate
+        case questionsListed: QuestionsListed     => questionsListed.validate
+        case questionAdded: QuestionAdded         => questionAdded.validate
+        case questionUpdated: QuestionUpdated     => questionUpdated.validate
         case faultsListed: FaultsListed           => faultsListed.validate
         case faultAdded: FaultAdded               => faultAdded.validate
         case fault: Fault                         => fault.validate
