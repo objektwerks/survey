@@ -164,6 +164,16 @@ object Validators:
       Validator()
         .validate(loggedIn.account.validate)
 
+  extension (participantListed: ParticipantListed)
+    def validate: Validator =
+      Validator()
+        .validate(participantListed.participant.validate)
+
+  extension (participantAdded: ParticipantAdded)
+    def validate: Validator =
+      Validator()
+        .validate(participantAdded.id > 0)(Field("Id"), Message("must be greater than 0."))
+
   extension (fault: Fault)
     def validate: Validator =
       Validator()
