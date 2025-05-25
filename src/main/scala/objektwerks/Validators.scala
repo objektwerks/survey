@@ -1,6 +1,7 @@
 package objektwerks
 
 import Validator.*
+import objektwerks.ParticipantAdded
 
 object Validators:
   extension (value: String)
@@ -176,8 +177,10 @@ object Validators:
   extension (event: Event)
     def validate: Validator =
       event match
-        case registered: Registered     => registered.validate
-        case loggedIn: LoggedIn         => loggedIn.validate
-        case faultsListed: FaultsListed => faultsListed.validate
-        case faultAdded: FaultAdded     => faultAdded.validate
-        case fault: Fault               => fault.validate
+        case registered: Registered               => registered.validate
+        case loggedIn: LoggedIn                   => loggedIn.validate
+        case participantListed: ParticipantListed => participantListed.validate
+        case participantAdded: ParticipantAdded   => participantAdded.validate
+        case faultsListed: FaultsListed           => faultsListed.validate
+        case faultAdded: FaultAdded               => faultAdded.validate
+        case fault: Fault                         => fault.validate
