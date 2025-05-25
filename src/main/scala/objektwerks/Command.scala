@@ -13,6 +13,7 @@ final case class ListSurveys(license: String, accountId: Long) extends Command w
 
 final case class AddSurvey(license: String, survey: Survey) extends Command with License
 
+final case class UpdateSurvey(license: String, survey: Survey) extends Command with License
 
 
 final case class ListFaults(license: String) extends Command with License
