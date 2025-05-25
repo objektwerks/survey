@@ -16,6 +16,12 @@ final case class SurveyAdded(id: Long) extends Event
 
 final case class SurveyUpdated(count: Int) extends Event
 
+final case class QuestionsListed(questions: List[Question]) extends Event
+
+final case class QuestionAdded(id: Long) extends Event
+
+final case class QuestionUpdated(count: Int) extends Event
+
 final case class Fault(cause: String, occurred: String = Entity.now) extends Event
 
 final case class FaultsListed(faults: List[Fault]) extends Event
