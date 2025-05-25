@@ -199,6 +199,11 @@ object Validators:
       Validator()
         .validate(questionAdded.id > 0)(Field("Id"), Message("must be greater than 0."))
 
+  extension (questionUpdated: QuestionUpdated)
+    def validate: Validator =
+      Validator()
+        .validate(questionUpdated.count == 1)(Field("Count"), Message("must equal 1."))
+
   extension (answersListed: AnswersListed)
     def validate: Validator =
       Validator()
