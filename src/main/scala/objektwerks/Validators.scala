@@ -105,6 +105,8 @@ object Validators:
         case listQuestions: ListQuestions     => listQuestions.validate
         case addQuestion: AddQuestion         => addQuestion.validate
         case updateQuestion: UpdateQuestion   => updateQuestion.validate
+        case listAnswers: ListAnswers         => listAnswers.validate
+        case addAnswer: AddAnswer             => addAnswer.validate
         case listFaults: ListFaults           => listFaults.validate
         case addFault: AddFault               => addFault.validate
 
