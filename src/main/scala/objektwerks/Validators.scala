@@ -174,6 +174,11 @@ object Validators:
       Validator()
         .validate(participantAdded.id > 0)(Field("Id"), Message("must be greater than 0."))
 
+  extension (surveysListed: SurveysListed)
+    def validate: Validator =
+      Validator()
+        .validate(surveysListed.surveys.length >= 0)(Field("Surveys"), Message("length must be greater than or equal to 0."))
+
   extension (fault: Fault)
     def validate: Validator =
       Validator()
