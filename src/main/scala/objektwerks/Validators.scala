@@ -181,6 +181,9 @@ object Validators:
         case loggedIn: LoggedIn                   => loggedIn.validate
         case participantListed: ParticipantListed => participantListed.validate
         case participantAdded: ParticipantAdded   => participantAdded.validate
+        case surveysListed: SurveysListed         => surveysListed.validate
+        case surveyAdded: SurveyAdded             => surveyAdded.validate
+        case surveyUpdated: SurveyUpdated         => surveyUpdated.validate
         case faultsListed: FaultsListed           => faultsListed.validate
         case faultAdded: FaultAdded               => faultAdded.validate
         case fault: Fault                         => fault.validate
