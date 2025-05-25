@@ -52,14 +52,6 @@ object Validators:
         .validate(answer.answer.nonEmpty)(Field("Answer"), Message("must be non empty."))
         .validate(answer.answered.nonEmpty)(Field("Answered"), Message("must be non empty."))
 
-  def validateEntity(entity: Entity): Validator =
-    entity match
-      case participant: Participant => participant.validate
-      case account: Account         => account.validate
-      case survey: Survey           => survey.validate
-      case question: Question       => question.validate
-      case answer: Answer           => answer.validate
-
   extension (register: Register)
     def validate: Validator =
       Validator()
@@ -82,6 +74,12 @@ object Validators:
       Validator()
         .validate(addSurvey.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
         .validate(addSurvey.survey.validate)
+
+  extension (updateSurvey: UpdateSurvey)
+    def validate: Validator =
+      Validator()
+        .validate(updateSurvey.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
+        .validate(updateSurvey.survey.validate)
 
   extension (listFaults: ListFaults)
     def validate: Validator =
