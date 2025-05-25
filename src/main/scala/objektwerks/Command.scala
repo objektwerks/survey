@@ -11,6 +11,9 @@ final case class Login(email: String, pin: String) extends Command
 
 final case class ListSurveys(license: String, accountId: Long) extends Command with License
 
+final case class AddSurvey(license: String, survey: Survey) extends Command with License
+
+
 
 final case class ListFaults(license: String) extends Command with License
 
