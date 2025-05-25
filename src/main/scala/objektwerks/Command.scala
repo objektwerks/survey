@@ -15,6 +15,8 @@ final case class AddSurvey(license: String, survey: Survey) extends Command with
 
 final case class UpdateSurvey(license: String, survey: Survey) extends Command with License
 
+final case class ListQuestions(license: String, surveyId: Long) extends Command with License
+
 
 final case class ListFaults(license: String) extends Command with License
 
