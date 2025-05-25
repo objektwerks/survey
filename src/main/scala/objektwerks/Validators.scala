@@ -69,6 +69,12 @@ object Validators:
         .validate(listParticipant.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
         .validate(listParticipant.email.isEmail)(Field("Email"), Message("must be at least 3 characters in length and contain 1 @ symbol."))
 
+  extension (addParticipant: AddParticipant)
+    def validate: Validator =
+      Validator()
+        .validate(addParticipant.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
+        .validate(addParticipant.participant.validate)
+
   extension (listSurveys: ListSurveys)
     def validate: Validator =
       Validator()
