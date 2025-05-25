@@ -9,6 +9,8 @@ final case class Register(email: String) extends Command
 
 final case class Login(email: String, pin: String) extends Command
 
+final case class AddParticipant(license: String, participant: Participant) extends Command with License
+
 final case class ListSurveys(license: String, accountId: Long) extends Command with License
 
 final case class AddSurvey(license: String, survey: Survey) extends Command with License
