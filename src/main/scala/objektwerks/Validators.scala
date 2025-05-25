@@ -85,10 +85,13 @@ object Validators:
   extension (command: Command)
     def validate: Validator =
       command match
-        case register: Register     => register.validate
-        case login: Login           => login.validate
-        case listFaults: ListFaults => listFaults.validate
-        case addFault: AddFault     => addFault.validate
+        case register: Register         => register.validate
+        case login: Login               => login.validate
+        case listSurveys: ListSurveys   => listSurveys.validate
+        case addSurvey: AddSurvey       => addSurvey.validate
+        case updateSurvey: UpdateSurvey => updateSurvey.validate
+        case listFaults: ListFaults     => listFaults.validate
+        case addFault: AddFault         => addFault.validate
 
   extension (registered: Registered)
     def validate: Validator =
