@@ -19,6 +19,9 @@ final class Dispatcher(handler: Handler):
               case ListSurveys(_, accountId)      => Fault("")
               case AddSurvey(_, survey)           => Fault("")
               case UpdateSurvey(_, survey)        => Fault("")
+              case ListQuestions(_, surveyId)     => Fault("")
+              case AddQuestion(_, question)       => Fault("")
+              case UpdateQuestion(_, question)    => Fault("")
               case ListFaults(_)                  => handler.listFaults()
               case AddFault(_, fault)             => handler.addFault(fault)
             val eventValidator = event.validate
