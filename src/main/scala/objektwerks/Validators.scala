@@ -187,6 +187,8 @@ object Validators:
         case questionsListed: QuestionsListed     => questionsListed.validate
         case questionAdded: QuestionAdded         => questionAdded.validate
         case questionUpdated: QuestionUpdated     => questionUpdated.validate
+        case answsersListed: AnswersListed        => answsersListed.validate
+        case answerAdded: AnswerAdded             => answerAdded.validate
         case faultsListed: FaultsListed           => faultsListed.validate
         case faultAdded: FaultAdded               => faultAdded.validate
         case fault: Fault                         => fault.validate
