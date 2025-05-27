@@ -6,7 +6,7 @@ final case class Registered(account: Account) extends Event
 
 final case class LoggedIn(account: Account) extends Event
 
-final case class ParticipantListed(participant: Participant) extends Event
+final case class ParticipantListed(participant: Option[Participant]) extends Event
 
 final case class ParticipantAdded(id: Long) extends Event
 
