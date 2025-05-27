@@ -89,6 +89,7 @@ final class Store(cache: Cache[String, String],
 
   def addQuestion(question: Question): Long = ???
 
+  def updateQuestion(question: Question): Int = ???
 
 
   def listFaults(): List[Fault] =
