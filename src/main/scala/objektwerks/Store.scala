@@ -145,7 +145,14 @@ final class Store(cache: Cache[String, String],
         .list()
     }
 
-  def addQuestion(question: Question): Long = ???
+  def addQuestion(question: Question): Long =
+    DB localTx { implicit session =>
+      sql"""
+        insert into question(survey_id, question, choices, created)
+        values(${question.surveyId}, ${question.question}, ${question.choices.mkString(",")}, ${question.created})
+        """
+        .updateAndReturnGeneratedKey()
+    }
 
   def updateQuestion(question: Question): Int = ???
 
