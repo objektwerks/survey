@@ -75,7 +75,14 @@ final class Handler(store: Store, emailer: Emailer):
 
   def addSurvey(survey: Survey): Long = store.addSurvey(survey)
 
-  def updateSurvey(survey: Survey): Int = store.updateSurvey(survey)
+  def updateSurvey(survey: Survey): Event =
+    try
+      SurveyUpdated(
+        supervised:
+          retry( RetryConfig.delay(1, 100.millis) )(  store.updateSurvey(survey) )
+      )
+    catch
+      case NonFatal(error) => addFault( Fault(s"Update survey failed: ${error.getMessage}") )
 
   def listQuestions(surveyId: Long): Event =
     try
@@ -97,7 +104,7 @@ final class Handler(store: Store, emailer: Emailer):
 
   def updateQuestion(question: Question): Event =
     try
-      QuestionAdded(
+      QuestionUpdated(
         supervised:
           retry( RetryConfig.delay(1, 100.millis) )(  store.updateQuestion(question) )
       )
