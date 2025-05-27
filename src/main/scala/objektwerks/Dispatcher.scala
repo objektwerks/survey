@@ -14,7 +14,7 @@ final class Dispatcher(handler: Handler):
             val event = command match
               case Register(email)                         => handler.register(email)
               case Login(email, pin)                       => handler.login(email, pin)
-              case ListParticipant(_, email)               => Fault("TODO")
+              case ListParticipant(_, email)               => handler.listParticipant(email)
               case AddParticipant(_, participant)          => Fault("TODO")
               case ListSurveys(_, accountId)               => Fault("TODO")
               case AddSurvey(_, survey)                    => Fault("TODO")
