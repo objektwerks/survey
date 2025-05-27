@@ -179,7 +179,14 @@ final class Store(cache: Cache[String, String],
         .list()
     }
 
-  def addAnswer(answer: Answer): Long = ???
+  def addAnswer(answer: Answer): Long =
+    DB localTx { implicit session =>
+      sql"""
+        insert into answer(survey_id, question_id, participant_id, answer, answered)
+        values(${answer.surveyId}, ${answer.questionId}, ${answer.participantId}, ${answer.answer.mkString(",")}, ${answer.answered})
+        """
+        .updateAndReturnGeneratedKey()
+    }
 
   def listFaults(): List[Fault] =
     DB readOnly { implicit session =>
