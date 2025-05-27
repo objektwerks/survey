@@ -56,7 +56,7 @@ final class Handler(store: Store, emailer: Emailer):
 
   def updateSurvey(survey: Survey): Int = store.updateSurvey(survey)
 
-  def listQuestions(surveyId: Long): List[Question] = ???
+  def listQuestions(surveyId: Long): List[Question] = store.listQuestions(surveyId)
 
   def addQuestion(question: Question): Long = ???
 
