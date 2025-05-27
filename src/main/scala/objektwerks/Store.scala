@@ -110,6 +110,7 @@ final class Store(cache: Cache[String, String],
           )
         )
         .list()
+    }
 
   def addSurvey(survey: Survey): Long = ???
 
