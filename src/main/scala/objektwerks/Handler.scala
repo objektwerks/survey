@@ -50,7 +50,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       ParticipantListed(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )(  store.listParticipant(email) )
+          retry( RetryConfig.delay(1, 100.millis) )( store.listParticipant(email) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List participant failed: ${error.getMessage}") )
@@ -59,7 +59,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       ParticipantAdded(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )(  store.addParticipant(participant) )
+          retry( RetryConfig.delay(1, 100.millis) )( store.addParticipant(participant) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Add answer failed: ${error.getMessage}") )
@@ -68,7 +68,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       SurveysListed(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )(  store.listSurveys(accountId) )
+          retry( RetryConfig.delay(1, 100.millis) )( store.listSurveys(accountId) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List surveys failed: ${error.getMessage}") )
@@ -86,7 +86,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       SurveyUpdated(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )(  store.updateSurvey(survey) )
+          retry( RetryConfig.delay(1, 100.millis) )( store.updateSurvey(survey) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Update survey failed: ${error.getMessage}") )
@@ -95,7 +95,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       QuestionsListed(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )(  store.listQuestions(surveyId) )
+          retry( RetryConfig.delay(1, 100.millis) )( store.listQuestions(surveyId) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List questions failed: ${error.getMessage}") )
@@ -104,7 +104,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       QuestionAdded(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )(  store.addQuestion(question) )
+          retry( RetryConfig.delay(1, 100.millis) )( store.addQuestion(question) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Add question failed: ${error.getMessage}") )
@@ -113,7 +113,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       QuestionUpdated(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )(  store.updateQuestion(question) )
+          retry( RetryConfig.delay(1, 100.millis) )( store.updateQuestion(question) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Update question failed: ${error.getMessage}") )
@@ -122,7 +122,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       AnswersListed(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )(  store.listAnswers(surveyId, participantId) )
+          retry( RetryConfig.delay(1, 100.millis) )( store.listAnswers(surveyId, participantId) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List answers failed: ${error.getMessage}") )
@@ -131,7 +131,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       AnswerAdded(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )(  store.addAnswer(answer) )
+          retry( RetryConfig.delay(1, 100.millis) )( store.addAnswer(answer) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Add answer failed: ${error.getMessage}") )
