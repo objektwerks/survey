@@ -166,8 +166,12 @@ object Validators:
 
   extension (participantListed: ParticipantListed)
     def validate: Validator =
-      Validator()
-        .validate(participantListed.participant.validate)
+      if participantListed.participant.isDefined then
+        Validator()
+          .validate(participantListed.participant.get.validate)
+      else
+        Validator()
+          .validate(Participant(id = -1, email = "", activated = "").validate)
 
   extension (participantAdded: ParticipantAdded)
     def validate: Validator =
