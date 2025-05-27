@@ -77,6 +77,8 @@ final class Store(cache: Cache[String, String],
 
   def listSurveys(accountId: Long): List[Survey] = ???
 
+  def addSurvey(survey: Survey): Long = ???
+
   def listFaults(): List[Fault] =
     DB readOnly { implicit session =>
       sql"select * from fault order by occurred desc"
