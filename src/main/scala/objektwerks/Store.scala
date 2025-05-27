@@ -97,7 +97,19 @@ final class Store(cache: Cache[String, String],
         .updateAndReturnGeneratedKey()
     }
 
-  def listSurveys(accountId: Long): List[Survey] = ???
+  def listSurveys(accountId: Long): List[Survey] =
+    DB readOnly { implicit session =>
+      sql"select * from survey where account_id = $accountId order by released desc"
+        .map(rs =>
+          Survey(
+            rs.long("id"),
+            rs.long("account_id"),
+            rs.string("title"),
+            rs.string("created"),
+            rs.string("released")
+          )
+        )
+        .list()
 
   def addSurvey(survey: Survey): Long = ???
 
