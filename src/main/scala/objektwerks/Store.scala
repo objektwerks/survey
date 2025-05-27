@@ -75,6 +75,8 @@ final class Store(cache: Cache[String, String],
       .updateAndReturnGeneratedKey()
     }
 
+  def listParticipant(email: String): Option[Participant] = ???
+
   def listSurveys(accountId: Long): List[Survey] = ???
 
   def addSurvey(survey: Survey): Long = ???
