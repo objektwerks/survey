@@ -91,6 +91,7 @@ final class Store(cache: Cache[String, String],
 
   def updateQuestion(question: Question): Int = ???
 
+  def listAnswers(surveyId: Long, participantId: Long): List[Answer] = ???
 
   def listFaults(): List[Fault] =
     DB readOnly { implicit session =>
