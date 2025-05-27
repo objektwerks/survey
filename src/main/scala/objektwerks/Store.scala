@@ -130,7 +130,20 @@ final class Store(cache: Cache[String, String],
         .update()
     }
 
-  def listQuestions(surveyId: Long): List[Question] = ???
+  def listQuestions(surveyId: Long): List[Question] =
+    DB readOnly { implicit session =>
+      sql"select * from question where survey_id = $surveyId order by created desc"
+        .map(rs =>
+          Question(
+            rs.long("id"),
+            rs.long("survey_id"),
+            rs.string("question"),
+            rs.string("choices").split(",").toList,
+            rs.string("created")
+          )
+        )
+        .list()
+    }
 
   def addQuestion(question: Question): Long = ???
 
