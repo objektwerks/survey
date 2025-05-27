@@ -23,7 +23,7 @@ final class Dispatcher(handler: Handler):
               case AddQuestion(_, question)                => handler.addQuestion(question)
               case UpdateQuestion(_, question)             => handler.updateQuestion(question)
               case ListAnswers(_, surveyId, participantId) => handler.listAnswers(surveyId, participantId)
-              case AddAnswer(_, answer)                    => Fault("TODO")
+              case AddAnswer(_, answer)                    => handler.addAnswer(answer)
               case ListFaults(_)                           => handler.listFaults()
               case AddFault(_, fault)                      => handler.addFault(fault)
             val eventValidator = event.validate
