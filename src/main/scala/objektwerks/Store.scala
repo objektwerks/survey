@@ -77,6 +77,8 @@ final class Store(cache: Cache[String, String],
 
   def listParticipant(email: String): Option[Participant] = ???
 
+  def addParticipant(participant: Participant): Long = ???
+
   def listSurveys(accountId: Long): List[Survey] = ???
 
   def addSurvey(survey: Survey): Long = ???
