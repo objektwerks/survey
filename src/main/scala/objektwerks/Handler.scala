@@ -46,6 +46,26 @@ final class Handler(store: Store, emailer: Emailer):
         if optionalAccount.isDefined then LoggedIn( optionalAccount.get )
         else addFault( Fault(s"Login failed for email address: $email and pin: $pin") ) )
 
+  def listParticipant(email: String): Option[Participant] = store.listParticipant(email = email )
+
+  def addParticipant(participant: Participant): Long = ???
+
+  def listSurveys(accountId: Long): List[Survey] = ???
+
+  def addSurvey(survey: Survey): Long = ???
+
+  def updateSurvey(survey: Survey): Int = ???
+
+  def listQuestions(surveyId: Long): List[Question] = ???
+
+  def addQuestion(question: Question): Long = ???
+
+  def updateQuestion(question: Question): Int = ???
+
+  def listAnswers(surveyId: Long, participantId: Long): List[Answer] = ???
+
+  def addAnswer(answer: Answer): Long = ???
+
   def listFaults(): Event =
     try
       FaultsListed(
