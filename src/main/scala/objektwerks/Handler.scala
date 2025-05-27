@@ -55,7 +55,14 @@ final class Handler(store: Store, emailer: Emailer):
     catch
       case NonFatal(error) => addFault( Fault(s"List participant failed: ${error.getMessage}") )
 
-  def addParticipant(participant: Participant): Long = store.addParticipant(participant)
+  def addParticipant(participant: Participant): Event =
+    try
+      ParticipantAdded(
+        supervised:
+          retry( RetryConfig.delay(1, 100.millis) )(  store.addParticipant(participant) )
+      )
+    catch
+      case NonFatal(error) => addFault( Fault(s"List participant failed: ${error.getMessage}") )
 
   def listSurveys(accountId: Long): List[Survey] = store.listSurveys(accountId)
 
