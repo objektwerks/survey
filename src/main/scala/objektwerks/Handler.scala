@@ -95,7 +95,14 @@ final class Handler(store: Store, emailer: Emailer):
     catch
       case NonFatal(error) => addFault( Fault(s"Add question failed: ${error.getMessage}") )
 
-  def updateQuestion(question: Question): Int = store.updateQuestion(question)
+  def updateQuestion(question: Question): Event =
+    try
+      QuestionAdded(
+        supervised:
+          retry( RetryConfig.delay(1, 100.millis) )(  store.updateQuestion(question) )
+      )
+    catch
+      case NonFatal(error) => addFault( Fault(s"Update question failed: ${error.getMessage}") )
 
   def listAnswers(surveyId: Long, participantId: Long): Event =
     try
