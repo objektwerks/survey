@@ -90,7 +90,14 @@ final class Handler(store: Store, emailer: Emailer):
 
   def updateQuestion(question: Question): Int = store.updateQuestion(question)
 
-  def listAnswers(surveyId: Long, participantId: Long): List[Answer] = store.listAnswers(surveyId, participantId)
+  def listAnswers(surveyId: Long, participantId: Long): Event =
+    try
+      AnswersListed(
+        supervised:
+          retry( RetryConfig.delay(1, 100.millis) )(  store.listAnswers(surveyId, participantId) )
+      )
+    catch
+      case NonFatal(error) => addFault( Fault(s"List answers failed: ${error.getMessage}") )
 
   def addAnswer(answer: Answer): Long = store.addAnswer(answer)
 
