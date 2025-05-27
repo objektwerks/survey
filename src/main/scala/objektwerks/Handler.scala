@@ -64,7 +64,7 @@ final class Handler(store: Store, emailer: Emailer):
 
   def listAnswers(surveyId: Long, participantId: Long): List[Answer] = store.listAnswers(surveyId, participantId)
 
-  def addAnswer(answer: Answer): Long = ???
+  def addAnswer(answer: Answer): Long = store.addAnswer(answer)
 
   def listFaults(): Event =
     try
