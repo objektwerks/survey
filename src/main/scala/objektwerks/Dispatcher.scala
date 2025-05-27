@@ -19,7 +19,7 @@ final class Dispatcher(handler: Handler):
               case ListSurveys(_, accountId)               => handler.listSurveys(accountId)
               case AddSurvey(_, survey)                    => handler.addSurvey(survey)
               case UpdateSurvey(_, survey)                 => handler.updateSurvey(survey)
-              case ListQuestions(_, surveyId)              => Fault("TODO")
+              case ListQuestions(_, surveyId)              => handler.listQuestions(surveyId)
               case AddQuestion(_, question)                => Fault("TODO")
               case UpdateQuestion(_, question)             => Fault("TODO")
               case ListAnswers(_, surveyId, participantId) => Fault("TODO")
