@@ -154,7 +154,14 @@ final class Store(cache: Cache[String, String],
         .updateAndReturnGeneratedKey()
     }
 
-  def updateQuestion(question: Question): Int = ???
+  def updateQuestion(question: Question): Int =
+    DB localTx { implicit session =>
+      sql"""
+        update question set question = ${question.question}, choices = ${question.choices.mkString(",")}}
+        where id = ${question.id}
+        """
+        .update()
+    }
 
   def listAnswers(surveyId: Long, participantId: Long): List[Answer] =
     DB readOnly { implicit session =>
