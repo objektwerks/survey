@@ -73,7 +73,14 @@ final class Handler(store: Store, emailer: Emailer):
     catch
       case NonFatal(error) => addFault( Fault(s"List surveys failed: ${error.getMessage}") )
 
-  def addSurvey(survey: Survey): Long = store.addSurvey(survey)
+  def addSurvey(survey: Survey): Event =
+    try
+      SurveyAdded(
+        supervised:
+          retry( RetryConfig.delay(1, 100.millis) )( store.addSurvey(survey) )
+      )
+    catch
+      case NonFatal(error) => addFault( Fault(s"Add survey failed: ${error.getMessage}") )
 
   def updateSurvey(survey: Survey): Event =
     try
