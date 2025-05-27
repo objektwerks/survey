@@ -75,7 +75,18 @@ final class Store(cache: Cache[String, String],
       .updateAndReturnGeneratedKey()
     }
 
-  def listParticipant(email: String): Option[Participant] = ???
+  def listParticipant(email: String): Option[Participant] =
+    DB readOnly { implicit session =>
+      sql"select * from particpant where email = $email"
+        .map(rs =>
+          Participant(
+            rs.long("id"),
+            rs.string("email"),
+            rs.string("activated")
+          )
+        )
+        .single()
+    }
 
   def addParticipant(participant: Participant): Long = ???
 
