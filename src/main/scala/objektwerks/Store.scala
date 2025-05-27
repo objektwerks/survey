@@ -88,7 +88,14 @@ final class Store(cache: Cache[String, String],
         .single()
     }
 
-  def addParticipant(participant: Participant): Long = ???
+  def addParticipant(participant: Participant): Long =
+    DB localTx { implicit session =>
+      sql"""
+        insert into participant(email, activated)
+        values(${participant.email}, ${participant.activated})
+        """
+        .updateAndReturnGeneratedKey()
+    }
 
   def listSurveys(accountId: Long): List[Survey] = ???
 
