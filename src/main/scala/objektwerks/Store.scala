@@ -121,7 +121,14 @@ final class Store(cache: Cache[String, String],
         .updateAndReturnGeneratedKey()
     }
 
-  def updateSurvey(survey: Survey): Int = ???
+  def updateSurvey(survey: Survey): Int =
+    DB localTx { implicit session =>
+      sql"""
+        update survey set title = ${survey.title}, created = ${survey.created}, released = ${survey.released}}
+        where id = ${survey.id}
+        """
+        .update()
+    }
 
   def listQuestions(surveyId: Long): List[Question] = ???
 
