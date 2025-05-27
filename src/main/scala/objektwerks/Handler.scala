@@ -50,7 +50,7 @@ final class Handler(store: Store, emailer: Emailer):
 
   def addParticipant(participant: Participant): Long = store.addParticipant(participant)
 
-  def listSurveys(accountId: Long): List[Survey] = ???
+  def listSurveys(accountId: Long): List[Survey] = store.listSurveys(accountId)
 
   def addSurvey(survey: Survey): Long = ???
 
