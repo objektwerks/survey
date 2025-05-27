@@ -15,7 +15,7 @@ final class Dispatcher(handler: Handler):
               case Register(email)                         => handler.register(email)
               case Login(email, pin)                       => handler.login(email, pin)
               case ListParticipant(_, email)               => handler.listParticipant(email)
-              case AddParticipant(_, participant)          => Fault("TODO")
+              case AddParticipant(_, participant)          => handler.addParticipant(participant)
               case ListSurveys(_, accountId)               => Fault("TODO")
               case AddSurvey(_, survey)                    => Fault("TODO")
               case UpdateSurvey(_, survey)                 => Fault("TODO")
