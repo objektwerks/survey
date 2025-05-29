@@ -41,7 +41,7 @@ CREATE TABLE answer (
   id BIGSERIAL PRIMARY KEY,
   survey_id BIGINT REFERENCES survey(id),
   question_id BIGINT REFERENCES question(id),
-  partipant_id BIGINT REFERENCES participant(id),
+  participant_id BIGINT REFERENCES participant(id),
   answer VARCHAR NOT NULL,
   answered VARCHAR(10) NOT NULL
 );
