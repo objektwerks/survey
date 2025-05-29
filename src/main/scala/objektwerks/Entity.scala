@@ -11,6 +11,8 @@ object Entity:
 
   def nowMinusOneDay: String = LocalDate.now.minusDays(1).toString
 
+  def nowPlusOneDay: String = LocalDate.now.plusDays(1).toString
+
 final case class Participant(
   id: Long = 0,
   email: String,
