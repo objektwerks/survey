@@ -69,9 +69,7 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
   def listParticipant: Unit =
     val listParticipant = ListParticipant(testAccount.license, testParticipant.email)
     dispatcher.dispatch(listParticipant) match
-      case SurveysListed(list) =>
-        list.length shouldBe 1
-        list.head shouldBe testSurvey
+      case ParticipantListed(optionalParticipant) => optionalParticipant.get shouldBe testParticipant
       case fault => fail(s"Invalid participant listed event: $fault")
 
   def addSurvey: Unit =
