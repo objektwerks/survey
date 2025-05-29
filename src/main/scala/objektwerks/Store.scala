@@ -113,6 +113,15 @@ final class Store(cache: Cache[String, String],
         optionalSurvey.map(survey => survey.isReleased).getOrElse(false)
     }
 
+  def releaseSurvey(surveyId: Long, released: String): Int =
+    DB localTx { implicit session =>
+      sql"""
+        update survey set released = ${released}}
+        where id = ${surveyId}
+        """
+        .update()
+    }
+
   def listSurveys(accountId: Long): List[Survey] =
     DB readOnly { implicit session =>
       sql"select * from survey where account_id = $accountId order by released desc"
