@@ -64,7 +64,7 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
       case SurveyAdded(id) =>
         id > 0 shouldBe true
         testParticipant = testParticipant.copy(id = id)
-      case fault => fail(s"Invalid survey added event: $fault")
+      case fault => fail(s"Invalid participant added event: $fault")
 
   def listParticipant: Unit =
     val listParticipant = ListParticipant(testAccount.license, testParticipant.email)
