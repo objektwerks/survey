@@ -116,7 +116,7 @@ final class Store(cache: Cache[String, String],
   def releaseSurvey(surveyId: Long, released: String): Int =
     DB localTx { implicit session =>
       sql"""
-        update survey set released = ${released}}
+        update survey set released = ${released}
         where id = ${surveyId}
         """
         .update()
