@@ -77,7 +77,7 @@ final class Store(cache: Cache[String, String],
 
   def listParticipant(email: String): Option[Participant] =
     DB readOnly { implicit session =>
-      sql"select * from particpant where email = $email"
+      sql"select * from participant where email = $email"
         .map(rs =>
           Participant(
             rs.long("id"),
