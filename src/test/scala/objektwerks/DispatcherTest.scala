@@ -105,6 +105,14 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
       case QuestionUpdated(count) => count shouldBe 1
       case fault => fail(s"Invalid question updated event: $fault")
 
+  def listQuestions: Unit =
+    val listQuestions = ListQuestions(testAccount.license, testQuestion.surveyId)
+    dispatcher.dispatch(listQuestions) match
+      case QuestionsListed(list) =>
+        list.length shouldBe 1
+        list.head shouldBe testQuestion
+      case fault => fail(s"Invalid questions listed event: $fault")
+
   def fault: Unit =
     val fault = Fault("test fault message")
     store.addFault(fault) shouldBe fault
