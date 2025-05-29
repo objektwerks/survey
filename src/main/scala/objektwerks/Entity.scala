@@ -8,7 +8,9 @@ sealed trait Entity:
 
 object Entity:
   def now: String = LocalDate.now.toString
+
   def nowMinusOneDay: String = LocalDate.now.minusDays(1).toString
+  
   def isReleased(survey: Survey): Boolean =
     val created = LocalDate.parse(survey.created)
     val released = LocalDate.parse(survey.released)
