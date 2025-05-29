@@ -18,6 +18,7 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
   val dispatcher = Dispatcher(handler)
 
   var testAccount = Account()
+  var testSurvey = Survey(accountId = 0, title = "Test Survey")
 
   test("dispatcher"):
     register
