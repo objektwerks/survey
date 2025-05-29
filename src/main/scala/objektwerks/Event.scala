@@ -16,6 +16,8 @@ final case class SurveyAdded(id: Long) extends Event
 
 final case class SurveyUpdated(count: Int) extends Event
 
+final case class SurveyReleased(count: Int) extends Event
+
 final case class QuestionsListed(questions: List[Question]) extends Event
 
 final case class QuestionAdded(id: Long) extends Event
