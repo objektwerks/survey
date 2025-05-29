@@ -113,6 +113,15 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
         list.head shouldBe testQuestion
       case fault => fail(s"Invalid questions listed event: $fault")
 
+  def addAnswer: Unit =
+    testAnswer = testAnswer.copy(surveyId = testSurvey.id, questionId = testQuestion.id, participantId = testParticipant.id)
+    val addAnswer = AddAnswer(testAccount.license, testAnswer)
+    dispatcher.dispatch(addAnswer) match
+      case AnswerAdded(id) =>
+        id > 0 shouldBe true
+        testAnswer = testAnswer.copy(id = id)
+      case fault => fail(s"Invalid answer added event: $fault")
+
   def listAnswers: Unit =
     val listAnswers = ListAnswers(testAccount.license, testSurvey.id, testParticipant.id)
     dispatcher.dispatch(listAnswers) match
