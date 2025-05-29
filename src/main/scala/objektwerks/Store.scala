@@ -97,9 +97,9 @@ final class Store(cache: Cache[String, String],
         .updateAndReturnGeneratedKey()
     }
 
-  def isSuveyReleased(id: Long): Boolean =
+  def isSuveyReleased(surveyId: Long): Boolean =
     DB readOnly { implicit session =>
-      val optionalSurvey = sql"select * from survey where id = $id"
+      val optionalSurvey = sql"select * from survey where id = $surveyId"
         .map(rs =>
           Survey(
             rs.long("id"),
