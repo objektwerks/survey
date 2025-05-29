@@ -97,6 +97,22 @@ final class Store(cache: Cache[String, String],
         .updateAndReturnGeneratedKey()
     }
 
+  def isReleased(id: Long): Boolean =
+    DB readOnly { implicit session =>
+      val survey = sql"select * from survey where id = $id"
+        .map(rs =>
+          Survey(
+            rs.long("id"),
+            rs.long("account_id"),
+            rs.string("title"),
+            rs.string("created"),
+            rs.string("released")
+          )
+        )
+        .single()
+        true
+    }
+
   def listSurveys(accountId: Long): List[Survey] =
     DB readOnly { implicit session =>
       sql"select * from survey where account_id = $accountId order by released desc"
