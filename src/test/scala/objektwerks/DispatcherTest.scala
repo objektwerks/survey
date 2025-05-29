@@ -18,6 +18,7 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
   val dispatcher = Dispatcher(handler)
 
   var testAccount = Account()
+  var testParticipant = Participant(email = "a@b")
   var testSurvey = Survey(accountId = 0, title = "Test")
 
   test("dispatcher"):
@@ -39,10 +40,18 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
       case LoggedIn(account) => account shouldBe testAccount
       case fault => fail(s"Invalid loggedin event: $fault")
 
+  def addParticipant: Unit =
+    val addParticipant = AddParticipant(testAccount.license, testParticipant)
+    dispatcher.dispatch(addParticipant) match
+      case SurveyAdded(id) =>
+        id > 0 shouldBe true
+        testParticipant = testParticipant.copy(id = id)
+      case fault => fail(s"Invalid survey added event: $fault")
+
   def addSurvey: Unit =
     testSurvey = testSurvey.copy(accountId = testAccount.id)
-    val addEntity = AddSurvey(testAccount.license, testSurvey)
-    dispatcher.dispatch(addEntity) match
+    val addSurvey = AddSurvey(testAccount.license, testSurvey)
+    dispatcher.dispatch(addSurvey) match
       case SurveyAdded(id) =>
         id > 0 shouldBe true
         testSurvey = testSurvey.copy(id = id)
@@ -50,14 +59,14 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
 
   def updateSurvey: Unit =
     testSurvey = testSurvey.copy(title = "Test Survey")
-    val updateEntity = UpdateSurvey(testAccount.license, testSurvey)
-    dispatcher.dispatch(updateEntity) match
+    val updateSurvey = UpdateSurvey(testAccount.license, testSurvey)
+    dispatcher.dispatch(updateSurvey) match
       case SurveyUpdated(id) => id shouldBe testSurvey.id
       case fault => fail(s"Invalid survey updated event: $fault")
 
   def listSurveys: Unit =
-    val list = ListSurveys(testAccount.license, testSurvey.accountId)
-    dispatcher.dispatch(list) match
+    val listSurveys = ListSurveys(testAccount.license, testSurvey.accountId)
+    dispatcher.dispatch(listSurveys) match
       case SurveysListed(list) =>
         list.length shouldBe 1
         list.head shouldBe testSurvey
