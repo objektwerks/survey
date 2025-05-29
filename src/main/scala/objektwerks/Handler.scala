@@ -140,7 +140,9 @@ final class Handler(store: Store, emailer: Emailer):
     try
       AnswerAdded(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.addAnswer(answer) )
+          if store.isSurveyReleased(answer.surveyId) then
+            retry( RetryConfig.delay(1, 100.millis) )( store.addAnswer(answer) )
+          else throw IllegalStateException(s"Survey [${answer.surveyId}] has not been released!")
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Add answer failed: ${error.getMessage}") )
