@@ -140,7 +140,7 @@ final class Store(cache: Cache[String, String],
   def addSurvey(survey: Survey): Long =
     DB localTx { implicit session =>
       sql"""
-        insert into survey(account_id, title, created, release)
+        insert into survey(account_id, title, created, released)
         values(${survey.accountId}, ${survey.title}, ${survey.created}, ${survey.released})
         """
         .updateAndReturnGeneratedKey()
