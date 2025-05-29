@@ -93,7 +93,7 @@ final class Handler(store: Store, emailer: Emailer):
 
   def releaseSurvey(surveyId: Long, released: String): Event =
     try
-      SurveyUpdated(
+      SurveyReleased(
         supervised:
           retry( RetryConfig.delay(1, 100.millis) )( store.releaseSurvey(surveyId, released) )
       )
