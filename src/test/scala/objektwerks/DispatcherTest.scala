@@ -25,6 +25,12 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
     register
     login
 
+    addParticipant
+
+    addSurvey
+    updateSurvey
+    listSurveys
+
     fault
 
   def register: Unit =
