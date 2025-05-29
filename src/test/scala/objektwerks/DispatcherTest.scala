@@ -6,6 +6,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import scala.sys.process.Process
+import java.time.LocalDate
 
 final class DispatcherTest extends AnyFunSuite with Matchers:
   val exitCode = Process("psql -d survey -f ddl.sql").run().exitValue()
@@ -47,6 +48,13 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
         id > 0 shouldBe true
         testSurvey = testSurvey.copy(id = id)
       case fault => fail(s"Invalid survey added event: $fault")
+
+  def updateSurvey: Unit =
+    testSurvey = testSurvey.copy(released = LocalDate.now.plusDays(1).toString)
+    val updateEntity = UpdateSurvey(testAccount.license, testSurvey)
+    dispatcher.dispatch(updateEntity) match
+      case SurveyUpdated(id) => id shouldBe testSurvey.id
+      case fault => fail(s"Invalid survey updated event: $fault")
 
   def fault: Unit =
     val fault = Fault("test fault message")
