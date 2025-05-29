@@ -190,7 +190,7 @@ final class Store(cache: Cache[String, String],
 
   def listAnswers(surveyId: Long, participantId: Long): List[Answer] =
     DB readOnly { implicit session =>
-      sql"select * from answer where survey_id = $surveyId and participantId = $participantId order by answered desc"
+      sql"select * from answer where survey_id = $surveyId and participant_id = $participantId order by answered desc"
         .map(rs =>
           Answer(
             rs.long("id"),
