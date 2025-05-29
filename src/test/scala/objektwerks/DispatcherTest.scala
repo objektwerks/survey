@@ -39,6 +39,15 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
       case LoggedIn(account) => account shouldBe testAccount
       case fault => fail(s"Invalid loggedin event: $fault")
 
+  def addSurvey: Unit =
+    testSurvey = testSurvey.copy(accountId = testAccount.id)
+    val addEntity = AddSurvey(testAccount.license, testSurvey)
+    dispatcher.dispatch(addEntity) match
+      case SurveyAdded(id) =>
+        id > 0 shouldBe true
+        testSurvey = testSurvey.copy(id = id)
+      case fault => fail(s"Invalid survey added event: $fault")
+
   def fault: Unit =
     val fault = Fault("test fault message")
     store.addFault(fault) shouldBe fault
