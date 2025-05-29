@@ -99,7 +99,7 @@ final class Store(cache: Cache[String, String],
 
   def isReleased(id: Long): Boolean =
     DB readOnly { implicit session =>
-      val survey = sql"select * from survey where id = $id"
+      val optionalSurvey = sql"select * from survey where id = $id"
         .map(rs =>
           Survey(
             rs.long("id"),
@@ -110,7 +110,7 @@ final class Store(cache: Cache[String, String],
           )
         )
         .single()
-        true
+        optionalSurvey.map(survey => Entity.isReleased(survey)).getOrElse(false)
     }
 
   def listSurveys(accountId: Long): List[Survey] =
