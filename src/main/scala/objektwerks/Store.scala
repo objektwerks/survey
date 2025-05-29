@@ -149,7 +149,7 @@ final class Store(cache: Cache[String, String],
   def updateSurvey(survey: Survey): Int =
     DB localTx { implicit session =>
       sql"""
-        update survey set title = ${survey.title}, created = ${survey.created}, released = ${survey.released}}
+        update survey set title = ${survey.title}, created = ${survey.created}, released = ${survey.released}
         where id = ${survey.id}
         """
         .update()
@@ -182,7 +182,7 @@ final class Store(cache: Cache[String, String],
   def updateQuestion(question: Question): Int =
     DB localTx { implicit session =>
       sql"""
-        update question set question = ${question.question}, choices = ${question.choices.mkString(",")}}
+        update question set question = ${question.question}, choices = ${question.choices.mkString(",")}
         where id = ${question.id}
         """
         .update()
