@@ -20,7 +20,8 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
   var testAccount = Account()
   var testParticipant = Participant(email = "a@b")
   var testSurvey = Survey(accountId = 0, title = "Test")
-  var testQuestion = Question(surveyId = 1, question = "What is the greatest beer?", choices = List())
+  var testQuestion = Question(surveyId = 1, question = "What is the greatest beer style?", choices = List())
+  var testAnswer = Answer(surveyId = 1, questionId = 1, participantId = 1, answer = List("IPA"))
 
   test("dispatcher"):
     register
