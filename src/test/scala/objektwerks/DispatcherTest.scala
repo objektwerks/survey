@@ -38,6 +38,8 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
     updateQuestion
     listQuestions
 
+    releaseSurvey // a survey must be released before answers can be added
+
     addAnswer
     listAnswers
 
