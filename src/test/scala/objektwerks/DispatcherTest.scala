@@ -20,7 +20,7 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
   var testAccount = Account()
   var testParticipant = Participant(email = "a@b")
   var testSurvey = Survey(accountId = 0, title = "Test")
-  var testQuestion = Question(surveyId = 1, question = "What is the greatest beer style?", choices = List())
+  var testQuestion = Question(surveyId = 1, question = "What is the greatest beer style?", choices = List("Lager", "Pilsner"))
   var testAnswer = Answer(surveyId = 1, questionId = 1, participantId = 1, answer = List("IPA"))
 
   test("dispatcher"):
@@ -78,7 +78,7 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
     testSurvey = testSurvey.copy(title = "Test Survey")
     val updateSurvey = UpdateSurvey(testAccount.license, testSurvey)
     dispatcher.dispatch(updateSurvey) match
-      case SurveyUpdated(id) => id shouldBe testSurvey.id
+      case SurveyUpdated(count) => count shouldBe 1
       case fault => fail(s"Invalid survey updated event: $fault")
 
   def listSurveys: Unit =
@@ -97,6 +97,13 @@ final class DispatcherTest extends AnyFunSuite with Matchers:
         id > 0 shouldBe true
         testQuestion = testQuestion.copy(id = id)
       case fault => fail(s"Invalid question added event: $fault")
+
+  def updateQuestion: Unit =
+    testQuestion = testQuestion.copy(choices = "IPA" :: testQuestion.choices)
+    val updateQuestion = UpdateQuestion(testAccount.license, testQuestion)
+    dispatcher.dispatch(updateQuestion) match
+      case QuestionUpdated(count) => count shouldBe 1
+      case fault => fail(s"Invalid question updated event: $fault")
 
   def fault: Unit =
     val fault = Fault("test fault message")
