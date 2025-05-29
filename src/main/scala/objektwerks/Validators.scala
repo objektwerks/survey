@@ -193,6 +193,11 @@ object Validators:
       Validator()
         .validate(surveyUpdated.count == 1)(Field("Count"), Message("must equal 1."))
 
+  extension (surveyReleased: SurveyReleased)
+    def validate: Validator =
+      Validator()
+        .validate(surveyReleased.count == 1)(Field("Released"), Message("must equal 1."))
+
   extension (questionsListed: QuestionsListed)
     def validate: Validator =
       Validator()
@@ -238,6 +243,7 @@ object Validators:
         case surveysListed: SurveysListed         => surveysListed.validate
         case surveyAdded: SurveyAdded             => surveyAdded.validate
         case surveyUpdated: SurveyUpdated         => surveyUpdated.validate
+        case surveyReleased: SurveyReleased       => surveyReleased.validate
         case questionsListed: QuestionsListed     => questionsListed.validate
         case questionAdded: QuestionAdded         => questionAdded.validate
         case questionUpdated: QuestionUpdated     => questionUpdated.validate
