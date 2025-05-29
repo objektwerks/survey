@@ -94,6 +94,12 @@ object Validators:
         .validate(updateSurvey.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
         .validate(updateSurvey.survey.validate)
 
+  extension (releaseSurvey: ReleaseSurvey)
+    def validate: Validator =
+      Validator()
+        .validate(releaseSurvey.license.isLicense)(Field("License"), Message("must be 36 characters in length."))
+        .validate(releaseSurvey.released.nonEmpty)(Field("Released"), Message("must be non empty."))
+
   extension (listQuestions: ListQuestions)
     def validate: Validator =
       Validator()
@@ -146,6 +152,7 @@ object Validators:
         case listSurveys: ListSurveys         => listSurveys.validate
         case addSurvey: AddSurvey             => addSurvey.validate
         case updateSurvey: UpdateSurvey       => updateSurvey.validate
+        case releaseSurvey: ReleaseSurvey     => releaseSurvey.validate
         case listQuestions: ListQuestions     => listQuestions.validate
         case addQuestion: AddQuestion         => addQuestion.validate
         case updateQuestion: UpdateQuestion   => updateQuestion.validate
