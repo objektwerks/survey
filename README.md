@@ -60,6 +60,10 @@ Model
 * Survey 1 --- * Question
 * Survey | Question | Participant 1 --- * Answer
 
+Question and Answer Typeof
+--------------------------
+>Both types contain a ```typeof``` property, allowing consumers to create a useful ```typeof``` question and answer protocol.
+
 Postgresql
 ----------
 1. config:
