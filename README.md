@@ -15,7 +15,7 @@ Usage
 >Question
 1. User - AddQuestion | UpdateQuestion | ListQuestion -> Server - QuestionAdded | QuestionUpdate | QuestionsListed | Fault -> User
 >Answer
-1. User - AddSurvey | UpdateSurvey | ListSurveys -> Server - SurveyAdded | SurveyUpdate | SurveysListed | Fault -> User
+1. User - AddAnswer | UpdateAnswer | ListAnswers -> Server - AnswerAdded | AnswerUpdate | AnswersListed | Fault -> User
 
 Model
 -----
