@@ -35,7 +35,7 @@ final class Handler(store: Store, emailer: Emailer):
           val id = store.register(account)
           Registered( account.copy(id = id) )
         else
-          throw IllegalArgumentException(s"Invalid email address.")
+          throw IllegalArgumentException("Invalid email address.")
     catch
       case NonFatal(error) => addFault( Fault(s"Registration failed for: $email, because: ${error.getMessage}") )
 
