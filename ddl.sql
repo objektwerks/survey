@@ -44,5 +44,6 @@ CREATE TABLE answer (
   question_id BIGINT REFERENCES question(id),
   participant_id BIGINT REFERENCES participant(id),
   answer VARCHAR NOT NULL,
+  typeof VARCHAR NOT NULL,
   answered VARCHAR(10) NOT NULL
 );
