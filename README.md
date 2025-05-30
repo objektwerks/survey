@@ -64,6 +64,8 @@ Question Choices
 ----------------
 >Choices, a simple model of ```List[String]```, allows consumers to create a model for any type of question.
 
+>Choices are stored as a ```comma-separated list of strings```.
+
 Answer Answers
 --------------
 >Answers, a simple model of ```List[String]```, allows consumers to create a model for any type of answer.
