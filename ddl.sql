@@ -43,7 +43,7 @@ CREATE TABLE answer (
   survey_id BIGINT REFERENCES survey(id),
   question_id BIGINT REFERENCES question(id),
   participant_id BIGINT REFERENCES participant(id),
-  answer VARCHAR NOT NULL,
+  answers VARCHAR NOT NULL,
   typeof VARCHAR NOT NULL,
   answered VARCHAR(10) NOT NULL
 );
