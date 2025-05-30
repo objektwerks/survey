@@ -29,6 +29,16 @@ Test
 Run
 ---
 1. sbt run
+>Output:
+```
+*** Survey Http Server started at: 127.0.0.1:7070/command
+*** Survey Command Endpoint: POST /command {body as application/json (UTF-8)} -> -/{body as application/json (UTF-8)}
+*** Survey Swagger Endpoint: GET /docs /docs.yaml -> -/{body as application/yaml (UTF-8)}
+*** Press Control-C to shutdown Survey Http Server at: 127.0.0.1:7070/command
+^C
+[warn] Canceling execution...
+*** Survey Http Server shutdown at: 127.0.0.1:7070
+```
 
 Postgresql
 ----------
