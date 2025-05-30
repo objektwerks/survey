@@ -207,8 +207,9 @@ final class Store(cache: Cache[String, String],
   def addAnswer(answer: Answer): Long =
     DB localTx { implicit session =>
       sql"""
-        insert into answer(survey_id, question_id, participant_id, answer, answered)
-        values(${answer.surveyId}, ${answer.questionId}, ${answer.participantId}, ${answer.answer.mkString(",")}, ${answer.answered})
+        insert into answer(survey_id, question_id, participant_id, answer, typeof, answered)
+        values(${answer.surveyId}, ${answer.questionId}, ${answer.participantId},
+        ${answer.answer.mkString(",")}, ${answer.typeof}, ${answer.answered})
         """
         .updateAndReturnGeneratedKey()
     }
