@@ -96,6 +96,7 @@ export SURVEY_EMAIL_PASSWORD="your.email.password"
 Resources
 ---------
 * [Survey Monkey](https://www.surveymonkey.com/mp/survey-question-types/)
+* [Tapir](https://tapir.softwaremill.com/en/latest/)
 
 License
 -------
