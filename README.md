@@ -62,7 +62,7 @@ Model
 
 Question Choices
 ----------------
->A simple model of ```List[String]``` allows consumers to create any type of question.
+>Choices, a simple model of ```List[String]```, allows consumers to create a model for any type of question.
 
 Answer Answer
 -------------
