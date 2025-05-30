@@ -164,6 +164,7 @@ final class Store(cache: Cache[String, String],
             rs.long("survey_id"),
             rs.string("question"),
             rs.string("choices").split(",").toList,
+            rs.string("typeof"),
             rs.string("created")
           )
         )
