@@ -8,6 +8,8 @@ Usage
 1. User - Register -> Server - Registered | Fault -> User
 >Login
 1. User - Login -> Server - LoggedIn | Fault -> User
+>Participant
+1. User - AddParticipant | ListParticipant -> Server - ParticipantAdded | ParticipantListed -> User
 
 Model
 -----
