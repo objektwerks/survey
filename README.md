@@ -10,6 +10,8 @@ Usage
 1. User - Login -> Server - LoggedIn | Fault -> User
 >Participant
 1. User - AddParticipant | ListParticipant -> Server - ParticipantAdded | ParticipantListed -> User
+>Survey
+1. User - AddSurvey | UpdateSurvey | ListSurveys -> Server - SurveyAdded | SurveyUpdate | SurveysListed | Fault -> User
 
 Model
 -----
