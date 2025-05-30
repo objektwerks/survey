@@ -6,6 +6,8 @@ Usage
 -----
 >Register
 1. User - Register -> Server - Registered | Fault -> User
+>Login
+1. User - Login -> Server - LoggedIn | Fault -> User
 
 Model
 -----
