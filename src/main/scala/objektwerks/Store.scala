@@ -185,7 +185,7 @@ final class Store(cache: Cache[String, String],
       sql"""
         update question set question = ${question.question},
         choices = ${question.choices.mkString(",")},
-        typeof = ${question.typeof},
+        typeof = ${question.typeof}
         where id = ${question.id}
         """
         .update()
