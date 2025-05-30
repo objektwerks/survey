@@ -70,7 +70,7 @@ Answer Answers
 --------------
 >Answers, a simple model of ```List[String]```, allows consumers to create a model for any type of answer.
 
->Answers are stored as a ```comma-separated list of Strings```.
+>Answers are stored as a ```comma-separated list of Strings```; and retrieved as ```List[String]```.
 
 Question and Answer Typeof
 --------------------------
