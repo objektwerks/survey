@@ -42,6 +42,7 @@ object Validators:
         .validate(question.surveyId > 0)(Field("SurveyId"), Message("must be greater than 0."))
         .validate(question.question.nonEmpty)(Field("Question"), Message("must be non empty."))
         .validate(question.choices.nonEmpty)(Field("Choices"), Message("must be non empty."))
+        .validate(question.typeof.isEmptyOrNonEmpty)(Field("Typeof"), Message("must be empty or non empty."))
         .validate(question.created.nonEmpty)(Field("Created"), Message("must be non empty."))
 
   extension (answer: Answer)
