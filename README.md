@@ -68,6 +68,10 @@ Question Choices
 ----------------
 >A simple model of ```List[String]``` allows consumers to create any type of question.
 
+Answer Answer
+-------------
+>A simple model of ```List[String]``` allows consumers to create any type of answer.
+
 Postgresql
 ----------
 1. config:
