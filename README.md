@@ -1,6 +1,6 @@
 Survey
 ------
->Survey http service using Jsoniter, ScalikeJdbc, Scaffeine, HikariCP, Tapir, Ox, Postgresql and Scala 3.
+>Survey http service using JoddMail, Jsoniter, ScalikeJdbc, Scaffeine, HikariCP, Tapir, Ox, Postgresql and Scala 3.
 
 Model
 -----
