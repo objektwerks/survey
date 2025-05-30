@@ -36,8 +36,13 @@ Run
 
 Curl
 ----
+>Request:
 ```
 curl -X POST http://127.0.0.1:7070/command -H 'Content-Type: application/json' -d '{"Register": {"email":"your-email@provider.com"}}'
+```
+>Response:
+```
+{"Registered":{"account":{"id":3,"license":"b1e86698-85bb-45b2-afec-0520d7dd3c3c","email":"your-email@provider.com","pin":"yS#eX6="}}}%  
 ```
 
 Postgresql
