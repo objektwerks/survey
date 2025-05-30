@@ -64,9 +64,9 @@ Question Choices
 ----------------
 >Choices, a simple model of ```List[String]```, allows consumers to create a model for any type of question.
 
-Answer Answer
--------------
->A simple model of ```List[String]``` allows consumers to create any type of answer.
+Answer Answers
+--------------
+>Answers, a simple model of ```List[String]```, allows consumers to create a model for any type of answer.
 
 Question and Answer Typeof
 --------------------------
