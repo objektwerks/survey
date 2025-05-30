@@ -30,10 +30,16 @@ object Server extends OxApp with LazyLogging:
       .addEndpoints(endpoints.swaggerEndpoints)
       .start()
 
-    println(s"*** Survey Endpoint: ${endpoints.commandEndpoint.show}")
-    println(s"*** Press Control-C to shutdown Survey Http Server at: $host:$port/$path")
-    logger.info(s"*** Survey Endpoint: ${endpoints.commandEndpoint.show}")
+    println(s"*** Survey Http Server started at: $host:$port/$path")
     logger.info(s"*** Survey Http Server started at: $host:$port/$path")
+
+    println(s"*** Survey Command Endpoint: ${endpoints.commandEndpoint.show}")
+    logger.info(s"*** Survey Command Endpoint: ${endpoints.commandEndpoint.show}")
+
+    println(s"*** Survey Swagger Endpoint: ${endpoints.swaggerEndpoints(0).show}")
+    logger.info(s"*** Survey Swagger Endpoint: ${endpoints.swaggerEndpoints(0).show}")
+
+    println(s"*** Press Control-C to shutdown Survey Http Server at: $host:$port/$path")
 
     releaseAfterScope:
       println(s"*** Survey Http Server shutdown at: $host:$port")
