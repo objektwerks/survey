@@ -182,7 +182,9 @@ final class Store(cache: Cache[String, String],
   def updateQuestion(question: Question): Int =
     DB localTx { implicit session =>
       sql"""
-        update question set question = ${question.question}, choices = ${question.choices.mkString(",")}
+        update question set question = ${question.question},
+        choices = ${question.choices.mkString(",")},
+        typeof = ${question.typeof},
         where id = ${question.id}
         """
         .update()
