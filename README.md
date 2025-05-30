@@ -2,6 +2,11 @@ Survey
 ------
 >Survey http service using JoddMail, Jsoniter, ScalikeJdbc, Scaffeine, HikariCP, Tapir, Ox, Postgresql and Scala 3.
 
+Usage
+-----
+>Register
+1. User - Register -> Server - Registered | Fault -> User
+
 Model
 -----
 * Account 1 --- * Survey
