@@ -213,7 +213,7 @@ final class Store(cache: Cache[String, String],
       sql"""
         insert into answer(survey_id, question_id, participant_id, answer, typeof, answered)
         values(${answer.surveyId}, ${answer.questionId}, ${answer.participantId},
-        ${answer.answer.mkString(",")}, ${answer.typeof}, ${answer.answered})
+        ${answer.answers.mkString(",")}, ${answer.typeof}, ${answer.answered})
         """
         .updateAndReturnGeneratedKey()
     }

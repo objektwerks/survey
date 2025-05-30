@@ -55,7 +55,7 @@ final case class Answer(
   surveyId: Long,
   questionId: Long,
   participantId: Long,
-  answer: List[String],
+  answers: List[String],
   typeof: String = "",
   answered: String = Entity.now
 ) extends Entity derives CanEqual
