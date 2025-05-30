@@ -70,7 +70,8 @@ Answer Answer
 
 Question and Answer Typeof
 --------------------------
->Both types contain a ```typeof``` property, allowing consumers to create a useful ```typeof``` question and answer protocol.
+>Both types contain a ```typeof``` property, allowing consumers to create a useful ```typeof``` question and answer protocol,
+>which couples nicely with question ```choices``` and answer ```answer```.
 
 Postgresql
 ----------
