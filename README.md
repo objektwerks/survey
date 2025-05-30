@@ -12,6 +12,10 @@ Usage
 1. User - AddParticipant | ListParticipant -> Server - ParticipantAdded | ParticipantListed -> User
 >Survey
 1. User - AddSurvey | UpdateSurvey | ListSurveys -> Server - SurveyAdded | SurveyUpdate | SurveysListed | Fault -> User
+>Question
+1. User - AddQuestion | UpdateQuestion | ListQuestion -> Server - QuestionAdded | QuestionUpdate | QuestionsListed | Fault -> User
+>Answer
+1. User - AddSurvey | UpdateSurvey | ListSurveys -> Server - SurveyAdded | SurveyUpdate | SurveysListed | Fault -> User
 
 Model
 -----
