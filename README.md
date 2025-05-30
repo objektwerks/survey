@@ -64,13 +64,13 @@ Question Choices
 ----------------
 >Choices, a simple model of ```List[String]```, allows consumers to create a model for any type of question.
 
->Choices are stored as a ```comma-separated list of Strings```.
+>Choices are stored as a ```comma-separated list of String```; and retrieved as ```List[String]```.
 
 Answer Answers
 --------------
 >Answers, a simple model of ```List[String]```, allows consumers to create a model for any type of answer.
 
->Answers are stored as a ```comma-separated list of Strings```; and retrieved as ```List[String]```.
+>Answers are stored as a ```comma-separated list of String```; and retrieved as ```List[String]```.
 
 Question and Answer Typeof
 --------------------------
