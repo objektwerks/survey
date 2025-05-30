@@ -2,17 +2,11 @@ Survey
 ------
 >Survey http service using Jsoniter, ScalikeJdbc, Scaffeine, HikariCP, Tapir, Ox, Postgresql and Scala 3.
 
-OO Model
---------
+Model
+-----
 * Account 1 --- * Survey
 * Survey 1 --- * Question
 * Survey | Question | Participant 1 --- * Answer
-
-Relational Model
-----------------
-* Survey * --> 1 Account
-* Question * --> 1 Survey
-* Answer * --> 1 Survey | Question | Participant
 
 Install
 -------
