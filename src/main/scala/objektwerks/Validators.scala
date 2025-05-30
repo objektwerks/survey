@@ -52,6 +52,7 @@ object Validators:
         .validate(answer.questionId > 0)(Field("QuestionId"), Message("must be greater than or equal to 0."))
         .validate(answer.participantId > 0)(Field("ParticipantId"), Message("must be greater than 0."))
         .validate(answer.answer.nonEmpty)(Field("Answer"), Message("must be non empty."))
+        .validate(answer.typeof.isEmptyOrNonEmpty)(Field("Typeof"), Message("must be empty or non empty."))
         .validate(answer.answered.nonEmpty)(Field("Answered"), Message("must be non empty."))
 
   extension (register: Register)
