@@ -34,6 +34,14 @@ Run
 *** Survey Http Server shutdown at: 127.0.0.1:7070
 ```
 
+Curl
+----
+```
+curl -X POST http://127.0.0.1:7070/command
+   -H 'Content-Type: application/json'
+   -d '{"email":"your-email@provider.com"}'
+```
+
 Postgresql
 ----------
 1. config:
