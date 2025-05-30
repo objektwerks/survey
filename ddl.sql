@@ -34,6 +34,7 @@ CREATE TABLE question (
   survey_id BIGINT REFERENCES survey(id),
   question VARCHAR NOT NULL,
   choices VARCHAR NOT NULL,
+  typeof VARCHAR NOT NULL,
   created VARCHAR(10) NOT NULL
 );
 
