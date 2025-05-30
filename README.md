@@ -2,27 +2,6 @@ Survey
 ------
 >Survey http service using JoddMail, Jsoniter, ScalikeJdbc, Scaffeine, HikariCP, Tapir, Ox, Postgresql and Scala 3.
 
-Usage
------
->Register
-1. User - Register -> Server - Registered | Fault -> User
->Login
-1. User - Login -> Server - LoggedIn | Fault -> User
->Participant
-1. User - AddParticipant | ListParticipant -> Server - ParticipantAdded | ParticipantListed -> User
->Survey
-1. User - AddSurvey | UpdateSurvey | ListSurveys -> Server - SurveyAdded | SurveyUpdate | SurveysListed | Fault -> User
->Question
-1. User - AddQuestion | UpdateQuestion | ListQuestion -> Server - QuestionAdded | QuestionUpdate | QuestionsListed | Fault -> User
->Answer
-1. User - AddAnswer | UpdateAnswer | ListAnswers -> Server - AnswerAdded | AnswerUpdate | AnswersListed | Fault -> User
-
-Model
------
-* Account 1 --- * Survey
-* Survey 1 --- * Question
-* Survey | Question | Participant 1 --- * Answer
-
 Install
 -------
 1. brew install postgresql@14
@@ -59,6 +38,27 @@ curl -X POST http://127.0.0.1:7070/command -H 'Content-Type: application/json' -
 ```
 {"Registered":{"account":{"id":3,"license":"b1e86698-85bb-45b2-afec-0520d7dd3c3c","email":"your-email@provider.com","pin":"yS#eX6="}}}%  
 ```
+
+Usage
+-----
+>Register
+1. User - Register -> Server - Registered | Fault -> User
+>Login
+1. User - Login -> Server - LoggedIn | Fault -> User
+>Participant
+1. User - AddParticipant | ListParticipant -> Server - ParticipantAdded | ParticipantListed -> User
+>Survey
+1. User - AddSurvey | UpdateSurvey | ListSurveys -> Server - SurveyAdded | SurveyUpdate | SurveysListed | Fault -> User
+>Question
+1. User - AddQuestion | UpdateQuestion | ListQuestion -> Server - QuestionAdded | QuestionUpdate | QuestionsListed | Fault -> User
+>Answer
+1. User - AddAnswer | UpdateAnswer | ListAnswers -> Server - AnswerAdded | AnswerUpdate | AnswersListed | Fault -> User
+
+Model
+-----
+* Account 1 --- * Survey
+* Survey 1 --- * Question
+* Survey | Question | Participant 1 --- * Answer
 
 Postgresql
 ----------
