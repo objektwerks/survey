@@ -198,6 +198,7 @@ final class Store(cache: Cache[String, String],
             rs.long("question_id"),
             rs.long("participant_id"),
             rs.string("answer").split(",").toList,
+            rs.string("typeof"),
             rs.string("answered")
           )
         )
