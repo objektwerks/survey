@@ -200,7 +200,7 @@ final class Store(cache: Cache[String, String],
             rs.long("survey_id"),
             rs.long("question_id"),
             rs.long("participant_id"),
-            rs.string("answer").split(",").toList,
+            rs.string("answers").split(",").toList,
             rs.string("typeof"),
             rs.string("answered")
           )
@@ -211,7 +211,7 @@ final class Store(cache: Cache[String, String],
   def addAnswer(answer: Answer): Long =
     DB localTx { implicit session =>
       sql"""
-        insert into answer(survey_id, question_id, participant_id, answer, typeof, answered)
+        insert into answer(survey_id, question_id, participant_id, answers, typeof, answered)
         values(${answer.surveyId}, ${answer.questionId}, ${answer.participantId},
         ${answer.answers.mkString(",")}, ${answer.typeof}, ${answer.answered})
         """
