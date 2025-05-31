@@ -74,7 +74,7 @@ Answer: Answers
 
 Question & Answer: Typeof
 -------------------------
->Both question and answer contain a ```typeof``` property, allowing consumers to create a useful ```typeof``` question and answer >protocol, which couples nicely with question ```choices``` and answer ```answers```.
+>Both question and answer contain a ```typeof``` property, allowing consumers to create a custom ```typeof``` question and answer >protocol, which couples nicely with question ```choices``` and answer ```answers```.
 
 Postgresql
 ----------
