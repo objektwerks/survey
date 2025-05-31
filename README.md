@@ -72,8 +72,8 @@ Answer: Answers
 
 >Answers are stored as a ```comma-separated list of String```; and retrieved as ```List[String]```.
 
-Question and Answer Typeof
---------------------------
+Question & Answer: Typeof
+-------------------------
 >Both types contain a ```typeof``` property, allowing consumers to create a useful ```typeof``` question and answer protocol,
 >which couples nicely with question ```choices``` and answer ```answers```.
 
