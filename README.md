@@ -60,8 +60,8 @@ Model
 * Survey 1 --- * Question
 * Survey | Question | Participant 1 --- * Answer
 
-Question Choices
-----------------
+Question: Choices
+-----------------
 >Choices, a simple model of ```List[String]```, allows consumers to create a model for any type of question.
 
 >Choices are stored as a ```comma-separated list of String```; and retrieved as ```List[String]```.
