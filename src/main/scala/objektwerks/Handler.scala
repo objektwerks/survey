@@ -1,7 +1,8 @@
 package objektwerks
 
 import ox.supervised
-import ox.resilience.{retry, RetryConfig}
+import ox.resilience.retry
+import ox.scheduling.Schedule
 
 import scala.concurrent.duration.*
 import scala.util.Try
@@ -13,7 +14,7 @@ final class Handler(store: Store, emailer: Emailer):
       case license: License =>
         try
           supervised:
-            retry( RetryConfig.delay(1, 100.millis) )(
+            retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )(
               if store.isAuthorized(license.license) then Authorized
               else Unauthorized(s"Unauthorized: $command")
             )
@@ -30,7 +31,7 @@ final class Handler(store: Store, emailer: Emailer):
       supervised:
         val account = Account(email = email)
         val message = s"Your new pin is: ${account.pin}\n\nWelcome aboard!"
-        val result = retry( RetryConfig.delay(1, 600.millis) )( sendEmail(account.email, message) )
+        val result = retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( sendEmail(account.email, message) )
         if result then
           val id = store.register(account)
           Registered( account.copy(id = id) )
@@ -42,7 +43,7 @@ final class Handler(store: Store, emailer: Emailer):
   def login(email: String, pin: String): Event =
     Try:
       supervised:
-        retry( RetryConfig.delay(1, 100.millis) )( store.login(email, pin) )
+        retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.login(email, pin) )
     .fold(
       error => addFault( Fault(s"Login failed: ${error.getMessage}") ),
       optionalAccount =>
@@ -53,7 +54,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       ParticipantListed(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.listParticipant(email) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.listParticipant(email) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List participant failed: ${error.getMessage}") )
@@ -62,7 +63,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       ParticipantAdded(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.addParticipant(participant) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.addParticipant(participant) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Add answer failed: ${error.getMessage}") )
@@ -71,7 +72,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       SurveysListed(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.listSurveys(accountId) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.listSurveys(accountId) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List surveys failed: ${error.getMessage}") )
@@ -80,7 +81,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       SurveyAdded(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.addSurvey(survey) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.addSurvey(survey) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Add survey failed: ${error.getMessage}") )
@@ -89,7 +90,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       SurveyUpdated(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.updateSurvey(survey) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.updateSurvey(survey) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Update survey failed: ${error.getMessage}") )
@@ -98,7 +99,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       SurveyReleased(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.releaseSurvey(surveyId, released) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.releaseSurvey(surveyId, released) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Release survey failed: ${error.getMessage}") )
@@ -107,7 +108,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       QuestionsListed(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.listQuestions(surveyId) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.listQuestions(surveyId) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List questions failed: ${error.getMessage}") )
@@ -116,7 +117,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       QuestionAdded(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.addQuestion(question) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.addQuestion(question) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Add question failed: ${error.getMessage}") )
@@ -125,7 +126,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       QuestionUpdated(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.updateQuestion(question) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.updateQuestion(question) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Update question failed: ${error.getMessage}") )
@@ -134,7 +135,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       AnswersListed(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.listAnswers(surveyId, participantId) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.listAnswers(surveyId, participantId) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List answers failed: ${error.getMessage}") )
@@ -144,7 +145,7 @@ final class Handler(store: Store, emailer: Emailer):
       AnswerAdded(
         supervised:
           if store.isSurveyReleased(answer.surveyId) then
-            retry( RetryConfig.delay(1, 100.millis) )( store.addAnswer(answer) )
+            retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.addAnswer(answer) )
           else throw IllegalStateException(s"Survey [${answer.surveyId}] has not been released!")
       )
     catch
@@ -154,7 +155,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       FaultsListed(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.listFaults() )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.listFaults() )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"List faults failed: ${error.getMessage}") )
@@ -163,7 +164,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       FaultAdded(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.addFault( Fault(fault) ) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.addFault( Fault(fault) ) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Add fault failed: ${error.getMessage}") )
@@ -172,7 +173,7 @@ final class Handler(store: Store, emailer: Emailer):
     try
       FaultAdded(
         supervised:
-          retry( RetryConfig.delay(1, 100.millis) )( store.addFault(fault) )
+          retry( Schedule.fixedInterval(100.millis).maxRepeats(1) )( store.addFault(fault) )
       )
     catch
       case NonFatal(error) => addFault( Fault(s"Add fault failed: ${error.getMessage}") )
