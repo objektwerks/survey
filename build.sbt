@@ -3,7 +3,7 @@ organization := "objektwerks"
 version := "8.0.0"
 scalaVersion := "3.7.1"
 libraryDependencies ++= {
-  val tapirVersion = "1.11.33"
+  val tapirVersion = "1.11.34"
   val oxVersion = "0.6.1"
   val jsoniterVersion = "2.36.5"
   Seq(
