@@ -1,7 +1,7 @@
 name := "survey"
 organization := "objektwerks"
 version := "8.0.0"
-scalaVersion := "3.8.3-RC2"
+scalaVersion := "3.8.3-RC3"
 libraryDependencies ++= {
   val tapirVersion = "1.13.11"
   val oxVersion = "1.0.4"
